@@ -4,8 +4,8 @@
 UPDATE test_modules tm
 SET
   title = 'A2 Lesen – Übungstest (Goethe)',
-  description = '3 Teile: Anzeigen zuordnen, Texte verstehen, Richtig/Falsch. 15 Aufgaben, 30 Minuten.',
-  question_count = 15,
+  description = '4 Teile: Anzeigen zuordnen, Texte verstehen, Richtig/Falsch, Situationen zuordnen. 20 Aufgaben, 30 Minuten.',
+  question_count = 20,
   duration_minutes = 30,
   exam_format = 'goethe'
 FROM levels l, skills s
@@ -212,6 +212,62 @@ SELECT tm.id,
   'Richtig',
   'Im Text: Schicht „von 7:00 bis 15:00 Uhr".',
   15, 3, 'true_false', 1
+FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
+WHERE l.code = 'A2' AND s.code = 'reading';
+
+-- Teil 4: Situationen den Anzeigen zuordnen (gemeinsamer Anzeigenpool a–f)
+INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
+SELECT tm.id,
+  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Fahrrad hat einen Platten und Sie brauchen es morgen wieder.\nWelche Anzeige passt?',
+  'multiple_choice',
+  jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
+  'c',
+  'Nur die Fahrradwerkstatt repariert innerhalb von 24 Stunden.',
+  16, 4, 'matching', 1
+FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
+WHERE l.code = 'A2' AND s.code = 'reading';
+
+INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
+SELECT tm.id,
+  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie möchten am Computer besser arbeiten lernen, haben aber noch nie einen Kurs gemacht.\nWelche Anzeige passt?',
+  'multiple_choice',
+  jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
+  'd',
+  'Der Computerkurs für Anfänger an der Volkshochschule passt genau.',
+  17, 4, 'matching', 1
+FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
+WHERE l.code = 'A2' AND s.code = 'reading';
+
+INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
+SELECT tm.id,
+  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie haben starke Zahnschmerzen und noch keinen Arzt in der Stadt.\nWelche Anzeige passt?',
+  'multiple_choice',
+  jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
+  'e',
+  'Die Zahnarztpraxis nimmt neue Patienten auch ohne Termin an.',
+  18, 4, 'matching', 1
+FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
+WHERE l.code = 'A2' AND s.code = 'reading';
+
+INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
+SELECT tm.id,
+  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie ziehen bald in eine neue Wohnung und brauchen günstig einen Tisch und einen Schrank.\nWelche Anzeige passt?',
+  'multiple_choice',
+  jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
+  'f',
+  'Die Möbelbörse bietet gebrauchte Möbel günstig an.',
+  19, 4, 'matching', 1
+FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
+WHERE l.code = 'A2' AND s.code = 'reading';
+
+INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
+SELECT tm.id,
+  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Deutsch ist noch nicht gut genug und Sie möchten abends einzeln üben.\nWelche Anzeige passt?',
+  'multiple_choice',
+  jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
+  'a',
+  'Die Nachhilfe bietet abends Einzelunterricht in Deutsch an.',
+  20, 4, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'A2' AND s.code = 'reading';
 
