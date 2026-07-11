@@ -9,20 +9,20 @@ const levels = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/50 bg-card">
+    <footer className="bg-ink">
       <div className="container px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
-              DeutschPrep
+            <Link to="/" className="inline-block">
+              <img src="/dp-logo.png" alt="DeutschPrep" className="h-7 w-auto" />
             </Link>
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="text-sm leading-relaxed text-ink-muted">
               Goethe-style exam preparation for learners across Africa. A1 to B2.
             </p>
           </div>
 
           <div>
-            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-white/60">
               Levels
             </h4>
             <ul className="space-y-3">
@@ -30,7 +30,7 @@ export function Footer() {
                 <li key={level.id}>
                   <Link
                     to={`/level/${level.id}`}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-ink-muted transition-colors hover:text-white"
                   >
                     {level.label}
                   </Link>
@@ -40,14 +40,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-white/60">
               Resources
             </h4>
             <ul className="space-y-3">
               <li>
                 <Link
                   to="/placement-test"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-ink-muted transition-colors hover:text-white"
                 >
                   Placement Test
                 </Link>
@@ -55,7 +55,7 @@ export function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-ink-muted transition-colors hover:text-white"
                 >
                   About Us
                 </Link>
@@ -63,7 +63,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:support@deutschprep.co.ke"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-ink-muted transition-colors hover:text-white"
                 >
                   Contact Support
                 </a>
@@ -72,10 +72,10 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-white/60">
               Skills
             </h4>
-            <ul className="space-y-3 text-sm text-muted-foreground">
+            <ul className="space-y-3 text-sm text-ink-muted">
               <li>Lesen (Reading)</li>
               <li>Schreiben (Writing)</li>
               <li>Sprechen (Speaking)</li>
@@ -84,20 +84,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+          <p className="text-sm text-ink-muted">
             © {new Date().getFullYear()} DeutschPrep. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link
               to="/terms"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-ink-muted transition-colors hover:text-white"
             >
               Terms
             </Link>
             <Link
               to="/privacy"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm text-ink-muted transition-colors hover:text-white"
             >
               Privacy
             </Link>

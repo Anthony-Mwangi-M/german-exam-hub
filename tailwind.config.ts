@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Inter'", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["'Hanken Grotesk'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
         card: "var(--shadow-card)",
@@ -45,6 +45,16 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          soft: "hsl(var(--brand-soft))",
+        },
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+          foreground: "hsl(var(--ink-foreground))",
+          muted: "hsl(var(--ink-muted))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

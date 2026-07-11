@@ -1,112 +1,123 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { marketingImages } from "@/lib/marketingImages";
+import { ChevronRight } from "lucide-react";
+
+/* Line icons in Preply's landmark style, hand-drawn for each level */
+function GateIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" className="h-11 w-11">
+      <path d="M6 40h36M8 40V18M14 40V18M20 40V18M28 40V18M34 40V18M40 40V18M6 18h36M8 18l-2-6h36l-2 6M18 12V8h12v4M22 8V5h4v3" />
+    </svg>
+  );
+}
+
+function BubblesIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" className="h-11 w-11">
+      <path d="M8 10h22a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H16l-6 5v-5H8a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2Z" />
+      <path d="M36 20h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2v4l-5-4h-9" />
+      <path d="M12 16h14M12 21h9" />
+    </svg>
+  );
+}
+
+function TrainIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" className="h-11 w-11">
+      <rect x="10" y="8" width="28" height="26" rx="4" />
+      <path d="M10 22h28M17 8v14M31 8v14M16 28h.01M32 28h.01M14 34l-4 6M34 34l4 6M18 40h12" />
+    </svg>
+  );
+}
+
+function PodiumIcon() {
+  return (
+    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" className="h-11 w-11">
+      <path d="M14 20h20l-2 20H16l-2-20ZM12 14h24v6H12zM24 14v-4M20 6h8v4h-8ZM20 28h8" />
+    </svg>
+  );
+}
 
 const levels = [
   {
     id: "a1",
-    code: "A1" as const,
+    code: "A1",
+    title: "A1 German",
     category: "Beginner",
-    title: "Start with everyday German",
-    description: "Basic vocabulary and simple phrases for familiar situations.",
-    price: "KES 100",
+    detail: "Everyday basics · from KES 100",
+    icon: GateIcon,
   },
   {
     id: "a2",
-    code: "A2" as const,
+    code: "A2",
+    title: "A2 German",
     category: "Elementary",
-    title: "Goethe-style Übungstest",
-    description: "Reference exam live — Lesen, Schreiben, Sprechen in official structure.",
-    price: "KES 150",
+    detail: "Reference Goethe exam · from KES 150",
+    icon: BubblesIcon,
     featured: true,
   },
   {
     id: "b1",
-    code: "B1" as const,
+    code: "B1",
+    title: "B1 German",
     category: "Intermediate",
-    title: "Travel and work scenarios",
-    description: "Handle routine tasks and describe experiences with confidence.",
-    price: "KES 200",
+    detail: "Work & travel scenarios · from KES 200",
+    icon: TrainIcon,
   },
   {
     id: "b2",
-    code: "B2" as const,
+    code: "B2",
+    title: "B2 German",
     category: "Upper-Intermediate",
-    title: "Complex texts and opinions",
-    description: "Interact fluently and understand detailed professional content.",
-    price: "KES 250",
+    detail: "Professional fluency · from KES 250",
+    icon: PodiumIcon,
   },
 ];
 
 export function LevelsSection() {
   return (
-    <section className="px-6 py-20 md:py-28" id="levels">
+    <section className="px-6 py-16 md:py-24" id="levels">
       <div className="container max-w-6xl">
-        <div className="mb-12 max-w-2xl">
-          <span className="dp-pill">CEFR levels</span>
-          <h2 className="dp-headline mt-5">
-            Choose your level.
-            <br />
-            Start practicing.
-          </h2>
-          <p className="dp-subhead mt-4">
+        <div className="mb-10 max-w-2xl">
+          <h2 className="dp-headline">Choose your level.</h2>
+          <p className="dp-subhead mt-4 font-medium">
             Lesen, Schreiben, and Sprechen at every level. Hören coming soon.
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {levels.map((level) => (
-            <Link key={level.id} to={`/level/${level.id}`} className="group block">
-              <article className="dp-surface-hover overflow-hidden">
-                <div className="dp-card-photo">
-                  <img
-                    src={marketingImages.levels[level.code]}
-                    alt={`${level.code} German exam preparation`}
-                  />
-                  <div className="dp-photo-overlay" />
-                  {level.featured && (
-                    <span className="absolute left-4 top-4 z-10 dp-pill-accent">
-                      Reference exam
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-6 md:p-7">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                    {level.category}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-foreground md:text-2xl">
-                    {level.code} · {level.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {level.description}
-                  </p>
-
-                  <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
-                    <div>
-                      <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                        From
-                      </p>
-                      <p className="text-2xl font-semibold tracking-tight text-foreground">
-                        {level.price}
-                      </p>
-                    </div>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors group-hover:text-primary">
-                      View modules
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {levels.map((level) => {
+            const Icon = level.icon;
+            return (
+              <Link key={level.id} to={`/level/${level.id}`} className="group block">
+                <article className="dp-surface-hover flex items-center gap-5 p-6 md:p-7">
+                  <div className="shrink-0 text-foreground transition-colors group-hover:text-brand">
+                    <Icon />
                   </div>
-                </div>
-              </article>
-            </Link>
-          ))}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-xl font-extrabold tracking-[-0.02em] text-foreground md:text-2xl">
+                        {level.title}
+                      </h3>
+                      {level.featured && (
+                        <span className="dp-pill-accent shrink-0">Reference exam</span>
+                      )}
+                    </div>
+                    <p className="mt-1 truncate text-sm font-medium text-muted-foreground">
+                      {level.category} · {level.detail}
+                    </p>
+                  </div>
+                  <ChevronRight className="h-5 w-5 shrink-0 text-foreground transition-transform group-hover:translate-x-1" />
+                </article>
+              </Link>
+            );
+          })}
         </div>
 
-        <p className="mt-14 text-center text-muted-foreground">
+        <p className="mt-12 text-center font-medium text-muted-foreground">
           Not sure which level?{" "}
           <Link
             to="/placement-test"
-            className="font-semibold text-foreground underline underline-offset-4 hover:text-primary"
+            className="font-extrabold text-foreground underline underline-offset-4 hover:text-brand"
           >
             Take the free placement test
           </Link>

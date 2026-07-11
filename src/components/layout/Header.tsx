@@ -4,7 +4,12 @@ import { Menu, X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 
-export function Header() {
+interface HeaderProps {
+  /** Overlay the page (transparent bg) so a dark hero's gradient runs behind the nav. */
+  overlay?: boolean;
+}
+
+export function Header({ overlay = false }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isAdmin, signOut } = useAuth();
   const navigate = useNavigate();
@@ -14,53 +19,64 @@ export function Header() {
     navigate("/");
   };
 
-  const navLink =
-    "text-sm text-muted-foreground transition-colors hover:text-foreground";
+  const navChip =
+    "rounded-lg px-3.5 py-2 text-sm font-semibold text-white/85 transition-colors hover:bg-white/10 hover:text-white";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/90 backdrop-blur-md">
+    <header
+      className={
+        overlay
+          ? "absolute inset-x-0 top-0 z-50 w-full bg-transparent"
+          : "sticky top-0 z-50 w-full bg-ink"
+      }
+    >
       <div className="container flex h-16 items-center justify-between">
-        <Link
-          to="/"
-          className="text-lg font-semibold tracking-tight text-foreground transition-opacity hover:opacity-70"
-        >
-          DeutschPrep
+        <Link to="/" className="transition-opacity hover:opacity-80">
+          <img src="/dp-logo.png" alt="DeutschPrep" className="h-8 w-auto" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/#levels" className={navLink}>
+        <nav className="hidden items-center gap-1 md:flex">
+          <Link to="/#levels" className={navChip}>
             Levels
           </Link>
-          <Link to="/about" className={navLink}>
+          <Link to="/about" className={navChip}>
             About
           </Link>
-          <Link to="/placement-test" className={navLink}>
+          <Link to="/placement-test" className={navChip}>
             Placement Test
           </Link>
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           {user ? (
             <>
               {isAdmin && (
-                <Link to="/admin/grading" className="text-sm font-medium text-accent hover:text-accent/80">
+                <Link
+                  to="/admin/grading"
+                  className="rounded-lg px-3.5 py-2 text-sm font-bold text-brand transition-colors hover:bg-white/10"
+                >
                   Grade Tests
                 </Link>
               )}
-              <Link to="/dashboard" className={navLink}>
+              <Link to="/dashboard" className={navChip}>
                 Dashboard
               </Link>
-              <Button variant="ghost" size="sm" onClick={handleSignOut}>
+              <Button
+                size="sm"
+                variant="ghost"
+                className="text-white/85 hover:bg-white/10 hover:text-white"
+                onClick={handleSignOut}
+              >
                 Sign Out
               </Button>
             </>
           ) : (
             <>
-              <Link to="/signin" className={navLink}>
-                Sign In
+              <Link to="/signin" className={navChip}>
+                Log in
               </Link>
               <Button size="sm" className="h-9 px-5" asChild>
-                <Link to="/signup">Get started</Link>
+                <Link to="/signup">Sign up</Link>
               </Button>
             </>
           )}
@@ -68,7 +84,7 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-card md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -77,15 +93,19 @@ export function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="border-t border-border/50 bg-card p-6 md:hidden">
-          <div className="flex flex-col gap-4">
-            <Link to="/#levels" onClick={() => setMobileMenuOpen(false)} className={navLink}>
+        <div className="border-t border-white/10 bg-ink p-6 md:hidden">
+          <div className="flex flex-col gap-2">
+            <Link to="/#levels" onClick={() => setMobileMenuOpen(false)} className={navChip}>
               Levels
             </Link>
-            <Link to="/about" onClick={() => setMobileMenuOpen(false)} className={navLink}>
+            <Link to="/about" onClick={() => setMobileMenuOpen(false)} className={navChip}>
               About
             </Link>
-            <Link to="/placement-test" onClick={() => setMobileMenuOpen(false)} className={navLink}>
+            <Link
+              to="/placement-test"
+              onClick={() => setMobileMenuOpen(false)}
+              className={navChip}
+            >
               Placement Test
             </Link>
             {user ? (
@@ -94,33 +114,41 @@ export function Header() {
                   <Link
                     to="/admin/grading"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-sm font-medium text-accent"
+                    className="rounded-lg px-3.5 py-2 text-sm font-bold text-brand"
                   >
                     Grade Tests
                   </Link>
                 )}
-                <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)} className={navLink}>
+                <Link
+                  to="/dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={navChip}
+                >
                   Dashboard
                 </Link>
                 <Button
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => {
                     handleSignOut();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full"
+                  className="mt-2 w-full"
                 >
                   Sign Out
                 </Button>
               </>
             ) : (
               <>
-                <Link to="/signin" onClick={() => setMobileMenuOpen(false)} className={navLink}>
-                  Sign In
+                <Link
+                  to="/signin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={navChip}
+                >
+                  Log in
                 </Link>
-                <Button asChild className="w-full">
+                <Button asChild className="mt-2 w-full">
                   <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
-                    Get started
+                    Sign up
                   </Link>
                 </Button>
               </>

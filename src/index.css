@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,45 +6,56 @@
 
 @layer base {
   :root {
-    /* exactly.ai: off-white canvas, black type, intense orange CTA */
-    --background: 40 20% 97%;
-    --foreground: 0 0% 7%;
+    /* Preply-style: white canvas, near-black ink, hot-pink brand */
+    --background: 0 0% 100%;
+    --foreground: 249 14% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 249 14% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 249 14% 8%;
 
-    --primary: 24 95% 53%;
+    /* Primary actions use the DeutschPrep coral brand */
+    --primary: 358 100% 68%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 15% 94%;
-    --secondary-foreground: 0 0% 12%;
+    /* Dark surfaces for hero/footer, Uppbeat-style */
+    --ink: 222 16% 11%;
+    --ink-soft: 222 14% 16%;
+    --ink-foreground: 0 0% 100%;
+    --ink-muted: 220 9% 65%;
 
-    --muted: 40 12% 93%;
-    --muted-foreground: 0 0% 42%;
+    --secondary: 240 9% 96%;
+    --secondary-foreground: 249 14% 12%;
 
-    --accent: 24 95% 53%;
+    --muted: 240 9% 96%;
+    --muted-foreground: 249 6% 40%;
+
+    /* Brand coral (#FF5A5F) — badges, highlights, accents */
+    --accent: 358 100% 68%;
     --accent-foreground: 0 0% 100%;
+
+    --brand: 358 100% 68%;
+    --brand-soft: 358 100% 96%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 40 10% 88%;
-    --input: 40 10% 88%;
-    --ring: 24 95% 53%;
+    --border: 240 6% 90%;
+    --input: 240 6% 88%;
+    --ring: 358 100% 68%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
 
-    --level-a1: 152 28% 38%;
-    --level-a2: 205 35% 42%;
-    --level-b1: 24 95% 53%;
-    --level-b2: 330 28% 42%;
+    --level-a1: 168 42% 45%;
+    --level-a2: 334 85% 58%;
+    --level-b1: 221 83% 53%;
+    --level-b2: 45 93% 47%;
 
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 32px rgb(0 0 0 / 0.06);
-    --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.06), 0 24px 48px rgb(0 0 0 / 0.1);
-    --shadow-photo: 0 12px 40px rgb(0 0 0 / 0.12);
+    --shadow-card: 0 1px 2px rgb(18 17 23 / 0.04), 0 6px 24px rgb(18 17 23 / 0.05);
+    --shadow-card-hover: 0 4px 12px rgb(18 17 23 / 0.07), 0 20px 44px rgb(18 17 23 / 0.1);
+    --shadow-photo: 0 12px 40px rgb(18 17 23 / 0.14);
   }
 }
 
@@ -59,79 +70,104 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   }
 }
 
 @layer components {
   .dp-pill {
-    @apply inline-flex items-center rounded-full border border-border bg-card px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
+    @apply inline-flex items-center rounded-full border border-border bg-card px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground;
   }
 
   .dp-pill-accent {
-    @apply inline-flex items-center rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-primary-foreground;
+    @apply inline-flex items-center rounded-full bg-brand px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.08em] text-foreground;
   }
 
   .dp-surface {
-    @apply rounded-3xl border border-border/70 bg-card;
-    box-shadow: var(--shadow-card);
+    @apply rounded-2xl border border-border bg-card;
   }
 
   .dp-surface-hover {
-    @apply dp-surface transition-all duration-300 ease-out;
+    @apply dp-surface transition-all duration-200 ease-out;
   }
 
   .dp-surface-hover:hover {
     box-shadow: var(--shadow-card-hover);
-    @apply -translate-y-0.5 border-border;
+    @apply -translate-y-0.5;
   }
 
   .dp-panel {
     @apply dp-surface overflow-hidden p-8 md:p-10 lg:p-12;
   }
 
-  /* exactly.ai-style photo frame */
   .dp-photo {
-    @apply relative overflow-hidden rounded-2xl bg-secondary md:rounded-3xl;
-    box-shadow: var(--shadow-photo);
+    @apply relative overflow-hidden rounded-xl bg-secondary md:rounded-2xl;
   }
 
   .dp-photo img {
-    @apply h-full w-full object-cover transition-transform duration-500 ease-out;
-  }
-
-  .dp-photo:hover img {
-    @apply scale-[1.02];
+    @apply h-full w-full object-cover;
   }
 
   .dp-photo-overlay {
-    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent;
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent;
   }
 
-  /* Large sans headline — exactly uses weight + line breaks, not serif */
+  /* Preply-style display headline: extra-heavy, tight */
   .dp-headline {
-    @apply text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-foreground md:text-5xl lg:text-[3.5rem];
+    @apply text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] text-foreground md:text-5xl lg:text-6xl;
   }
 
   .dp-subhead {
     @apply text-lg leading-relaxed text-muted-foreground md:text-xl;
   }
 
-  /* Case-study card image area */
   .dp-card-photo {
-    @apply dp-photo aspect-[16/10] w-full rounded-b-none rounded-t-3xl shadow-none;
+    @apply dp-photo aspect-[16/10] w-full rounded-b-none rounded-t-2xl;
   }
 
-  .dp-card-photo img {
-    box-shadow: none;
+  /* Preply stacked-photo treatment: offset echo cards behind the main image */
+  .dp-stack {
+    @apply relative isolate;
+  }
+
+  .dp-stack > .dp-stack-main {
+    @apply relative z-10 w-full overflow-hidden rounded-xl md:rounded-2xl;
+    box-shadow: var(--shadow-photo);
+  }
+
+  .dp-stack > .dp-stack-echo {
+    @apply absolute inset-0 overflow-hidden rounded-xl bg-white/70 md:rounded-2xl;
+  }
+
+  .dp-stack > .dp-stack-echo img {
+    @apply h-full w-full object-cover opacity-80;
   }
 
   .level-badge {
-    @apply inline-flex items-center justify-center rounded-full px-3 py-1 text-sm font-medium;
+    @apply inline-flex items-center justify-center rounded-full px-3 py-1 text-sm font-bold;
   }
 
   .level-a1 { @apply bg-level-a1/12 text-level-a1; }
   .level-a2 { @apply bg-level-a2/12 text-level-a2; }
   .level-b1 { @apply bg-level-b1/12 text-level-b1; }
   .level-b2 { @apply bg-level-b2/12 text-level-b2; }
+
+  /* Uppbeat-style mono accent for a highlighted word in display copy */
+  .dp-mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    @apply font-bold tracking-tight;
+  }
+
+  /* Sunset gradient blob bleeding from the top-right corner, Uppbeat-style */
+  .dp-blob {
+    @apply pointer-events-none absolute inset-0;
+    background:
+      radial-gradient(
+        720px 520px at 88% -8%,
+        hsl(24 96% 68% / 0.95),
+        hsl(358 100% 68% / 0.55) 42%,
+        hsl(262 60% 55% / 0.28) 66%,
+        transparent 74%
+      );
+  }
 }
