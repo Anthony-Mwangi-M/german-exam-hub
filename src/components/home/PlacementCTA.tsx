@@ -1,66 +1,58 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Target, Clock, Award } from "lucide-react";
-
-const benefits = [
-  {
-    icon: Target,
-    title: "Know Your Level",
-    description: "Discover if you're A1, A2, B1, or B2 in minutes",
-  },
-  {
-    icon: Clock,
-    title: "Quick & Easy",
-    description: "Complete the test in under 15 minutes",
-  },
-  {
-    icon: Award,
-    title: "100% Free",
-    description: "No payment or registration required",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { marketingImages } from "@/lib/marketingImages";
 
 export function PlacementCTA() {
   return (
-    <section className="py-20">
-      <div className="container">
-        <div className="relative overflow-hidden rounded-3xl bg-foreground p-8 md:p-12 lg:p-16">
-          {/* Content */}
-          <div className="relative z-10 mx-auto max-w-3xl text-center">
-            <span className="mb-4 inline-block rounded-full bg-accent px-4 py-1 text-sm font-semibold text-accent-foreground">
-              FREE
-            </span>
-            <h2 className="mb-4 text-3xl font-bold text-background md:text-4xl lg:text-5xl">
-              Not Sure Where to Start?
-            </h2>
-            <p className="mb-8 text-lg text-background/80">
-              Take our free placement test to discover your current German level. Get personalized recommendations for which revision modules to start with.
-            </p>
-
-            {/* Benefits */}
-            <div className="mb-10 grid gap-6 md:grid-cols-3">
-              {benefits.map((benefit) => (
-                <div key={benefit.title} className="rounded-xl bg-background/10 p-4">
-                  <benefit.icon className="mx-auto mb-3 h-8 w-8 text-accent" />
-                  <h3 className="mb-1 font-semibold text-background">{benefit.title}</h3>
-                  <p className="text-sm text-background/70">{benefit.description}</p>
-                </div>
-              ))}
+    <section className="px-6 py-20 md:py-28">
+      <div className="container max-w-6xl">
+        <div className="dp-surface overflow-hidden">
+          <div className="grid lg:grid-cols-2">
+            <div className="dp-photo min-h-[240px] rounded-none shadow-none lg:min-h-full">
+              <img
+                src={marketingImages.hero.tertiary}
+                alt="Student discovering their German level"
+              />
+              <div className="dp-photo-overlay" />
             </div>
 
-            {/* CTA */}
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90"
-              asChild
-            >
-              <Link to="/placement-test">Take Free Placement Test Now</Link>
-            </Button>
-          </div>
+            <div className="flex flex-col justify-center p-8 md:p-12 lg:p-14">
+              <span className="dp-pill w-fit">Free · ~15 minutes</span>
 
-          {/* Decorative elements */}
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
-          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-accent/20 blur-3xl" />
+              <h2 className="dp-headline mt-6 text-3xl md:text-4xl">
+                Not sure where to start?
+                <br />
+                Find your level first.
+              </h2>
+
+              <p className="mt-4 text-muted-foreground">
+                A short diagnostic across grammar and comprehension. Get a CEFR recommendation before you purchase any module.
+              </p>
+
+              <Button size="lg" className="mt-8 h-12 w-fit rounded-full px-8 font-semibold" asChild>
+                <Link to="/placement-test">
+                  Take placement test
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-8">
+                <div>
+                  <p className="text-2xl font-semibold tracking-tight">~15m</p>
+                  <p className="text-xs text-muted-foreground">Duration</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold tracking-tight">A1–B2</p>
+                  <p className="text-xs text-muted-foreground">All levels</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold tracking-tight">Free</p>
+                  <p className="text-xs text-muted-foreground">Always</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

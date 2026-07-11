@@ -1,0 +1,18 @@
+# Deferred for v1 — manual instructor grading only. Do not deploy unless AI_EVALUATION_ENABLED=true.
+[functions.evaluate-writing]
+verify_jwt = true
+
+[functions.evaluate-speaking]
+verify_jwt = true
+
+[functions.mpesa-stk-push]
+verify_jwt = true
+
+[functions.mpesa-callback]
+verify_jwt = false
+
+[functions.mpesa-query]
+verify_jwt = true
+
+[functions.demo-complete-purchase]
+verify_jwt = true

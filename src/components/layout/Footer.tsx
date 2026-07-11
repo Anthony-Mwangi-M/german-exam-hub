@@ -1,36 +1,31 @@
 import { Link } from "react-router-dom";
 
 const levels = [
-  { id: "a1", label: "A1 - Beginner" },
-  { id: "a2", label: "A2 - Elementary" },
-  { id: "b1", label: "B1 - Intermediate" },
-  { id: "b2", label: "B2 - Upper-Intermediate" },
+  { id: "a1", label: "A1 — Beginner" },
+  { id: "a2", label: "A2 — Elementary" },
+  { id: "b1", label: "B1 — Intermediate" },
+  { id: "b2", label: "B2 — Upper-Intermediate" },
 ];
-
-const skills = ["Hören (Listening)", "Lesen (Reading)", "Schreiben (Writing)", "Sprechen (Speaking)"];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
-      <div className="container py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
+    <footer className="border-t border-border/50 bg-card">
+      <div className="container px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">D</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">DeutschPrep</span>
+            <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
+              DeutschPrep
             </Link>
-            <p className="text-sm text-muted-foreground">
-              Prepare for German exams with confidence. Practice real exam-style questions from A1 to B2.
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Goethe-style exam preparation for learners across Africa. A1 to B2.
             </p>
           </div>
 
-          {/* Levels */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Exam Levels</h4>
-            <ul className="space-y-2">
+            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              Levels
+            </h4>
+            <ul className="space-y-3">
               {levels.map((level) => (
                 <li key={level.id}>
                   <Link
@@ -44,28 +39,17 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Skills */}
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Exam Skills</h4>
-            <ul className="space-y-2">
-              {skills.map((skill) => (
-                <li key={skill} className="text-sm text-muted-foreground">
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="mb-4 font-semibold text-foreground">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              Resources
+            </h4>
+            <ul className="space-y-3">
               <li>
                 <Link
-                  to="/"
+                  to="/placement-test"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Home
+                  Placement Test
                 </Link>
               </li>
               <li>
@@ -77,21 +61,47 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/placement-test"
+                <a
+                  href="mailto:support@deutschprep.co.ke"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Free Placement Test
-                </Link>
+                  Contact Support
+                </a>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+              Skills
+            </h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>Lesen (Reading)</li>
+              <li>Schreiben (Writing)</li>
+              <li>Sprechen (Speaking)</li>
+              <li>Hören (Listening) — soon</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-6">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} DeutschPrep. All rights reserved. Prices shown in KES (Kenyan Shillings).
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 sm:flex-row">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} DeutschPrep. All rights reserved.
           </p>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/terms"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Terms
+            </Link>
+            <Link
+              to="/privacy"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Privacy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

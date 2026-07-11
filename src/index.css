@@ -1,99 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 220 20% 15%;
+    /* exactly.ai: off-white canvas, black type, intense orange CTA */
+    --background: 40 20% 97%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 7%;
 
     --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 15%;
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 40 12% 93%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 160 60% 45%;
+    --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
     --ring: 24 95% 53%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
 
-    /* Custom tokens */
-    --level-a1: 142 70% 45%;
-    --level-a2: 170 70% 40%;
+    --level-a1: 152 28% 38%;
+    --level-a2: 205 35% 42%;
     --level-b1: 24 95% 53%;
-    --level-b2: 340 75% 55%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(24, 95%, 53%) 0%, hsl(340, 75%, 55%) 100%);
-    --shadow-card: 0 4px 24px -4px hsl(220 20% 15% / 0.08);
-    --shadow-card-hover: 0 12px 32px -8px hsl(220 20% 15% / 0.15);
-    --shadow-button: 0 4px 12px -2px hsl(24 95% 53% / 0.35);
+    --level-b2: 330 28% 42%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 24 95% 53%;
-  }
-
-  .dark {
-    --background: 220 20% 10%;
-    --foreground: 0 0% 98%;
-
-    --card: 220 20% 13%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 220 20% 13%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 24 95% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 14% 20%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 220 14% 20%;
-    --muted-foreground: 220 10% 65%;
-
-    --accent: 160 60% 50%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 14% 25%;
-    --input: 220 14% 25%;
-    --ring: 24 95% 55%;
-
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 24 95% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 20%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 220 14% 25%;
-    --sidebar-ring: 24 95% 55%;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 32px rgb(0 0 0 / 0.06);
+    --shadow-card-hover: 0 4px 12px rgb(0 0 0 / 0.06), 0 24px 48px rgb(0 0 0 / 0.1);
+    --shadow-photo: 0 12px 40px rgb(0 0 0 / 0.12);
   }
 }
 
@@ -108,47 +59,79 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-hero);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  .shadow-card-hover {
-    box-shadow: var(--shadow-card-hover);
-  }
-
-  .shadow-button {
-    box-shadow: var(--shadow-button);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   }
 }
 
 @layer components {
+  .dp-pill {
+    @apply inline-flex items-center rounded-full border border-border bg-card px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .dp-pill-accent {
+    @apply inline-flex items-center rounded-full bg-primary px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-primary-foreground;
+  }
+
+  .dp-surface {
+    @apply rounded-3xl border border-border/70 bg-card;
+    box-shadow: var(--shadow-card);
+  }
+
+  .dp-surface-hover {
+    @apply dp-surface transition-all duration-300 ease-out;
+  }
+
+  .dp-surface-hover:hover {
+    box-shadow: var(--shadow-card-hover);
+    @apply -translate-y-0.5 border-border;
+  }
+
+  .dp-panel {
+    @apply dp-surface overflow-hidden p-8 md:p-10 lg:p-12;
+  }
+
+  /* exactly.ai-style photo frame */
+  .dp-photo {
+    @apply relative overflow-hidden rounded-2xl bg-secondary md:rounded-3xl;
+    box-shadow: var(--shadow-photo);
+  }
+
+  .dp-photo img {
+    @apply h-full w-full object-cover transition-transform duration-500 ease-out;
+  }
+
+  .dp-photo:hover img {
+    @apply scale-[1.02];
+  }
+
+  .dp-photo-overlay {
+    @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent;
+  }
+
+  /* Large sans headline — exactly uses weight + line breaks, not serif */
+  .dp-headline {
+    @apply text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-foreground md:text-5xl lg:text-[3.5rem];
+  }
+
+  .dp-subhead {
+    @apply text-lg leading-relaxed text-muted-foreground md:text-xl;
+  }
+
+  /* Case-study card image area */
+  .dp-card-photo {
+    @apply dp-photo aspect-[16/10] w-full rounded-b-none rounded-t-3xl shadow-none;
+  }
+
+  .dp-card-photo img {
+    box-shadow: none;
+  }
+
   .level-badge {
-    @apply inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-semibold;
+    @apply inline-flex items-center justify-center rounded-full px-3 py-1 text-sm font-medium;
   }
 
-  .level-a1 {
-    @apply bg-level-a1/10 text-level-a1;
-  }
-
-  .level-a2 {
-    @apply bg-level-a2/10 text-level-a2;
-  }
-
-  .level-b1 {
-    @apply bg-level-b1/10 text-level-b1;
-  }
-
-  .level-b2 {
-    @apply bg-level-b2/10 text-level-b2;
-  }
+  .level-a1 { @apply bg-level-a1/12 text-level-a1; }
+  .level-a2 { @apply bg-level-a2/12 text-level-a2; }
+  .level-b1 { @apply bg-level-b1/12 text-level-b1; }
+  .level-b2 { @apply bg-level-b2/12 text-level-b2; }
 }
