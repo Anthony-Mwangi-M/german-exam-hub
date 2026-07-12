@@ -15,6 +15,20 @@ interface Question {
   correct_answer: string;
   points: number;
   order: number;
+  level: { code: string } | null;
+}
+
+const BAND_ORDER = ['A1', 'A2', 'B1', 'B2'] as const;
+/** A band counts as mastered at >= 60% of its points. */
+const BAND_MASTERY_THRESHOLD = 0.6;
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 export default function PlacementTest() {
@@ -22,7 +36,7 @@ export default function PlacementTest() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes
+  const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 minutes
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -43,7 +57,7 @@ export default function PlacementTest() {
     try {
       const { data, error } = await supabase
         .from('placement_test_questions')
-        .select('*')
+        .select('*, level:levels(code)')
         .order('order');
 
       if (error) {
@@ -52,7 +66,8 @@ export default function PlacementTest() {
       } else if (!data || data.length === 0) {
         alert('No questions found. Please contact support.');
       } else {
-        setQuestions(data || []);
+        // Shuffle answer options so the key position carries no signal
+        setQuestions(data.map((q) => ({ ...q, options: shuffle(q.options as string[]) })));
         setStarted(true);
       }
     } catch (err) {
@@ -84,32 +99,38 @@ export default function PlacementTest() {
 
     setLoading(true);
 
-    // Calculate score
+    // Calculate total and per-band scores
     let score = 0;
     let maxScore = 0;
-    const levelScores: Record<string, { score: number; max: number }> = {};
+    const bandScores: Record<string, { score: number; max: number }> = {};
 
     questions.forEach((q) => {
+      const band = q.level?.code ?? 'A1';
       maxScore += q.points;
-      if (!levelScores[q.level_id]) {
-        levelScores[q.level_id] = { score: 0, max: 0 };
+      if (!bandScores[band]) {
+        bandScores[band] = { score: 0, max: 0 };
       }
-      levelScores[q.level_id].max += q.points;
+      bandScores[band].max += q.points;
 
       if (answers[q.id] === q.correct_answer) {
         score += q.points;
-        levelScores[q.level_id].score += q.points;
+        bandScores[band].score += q.points;
       }
     });
 
-    // Determine level based on performance
-    let resultLevel = 'A1';
     const percentage = (score / maxScore) * 100;
 
-    if (percentage >= 85) resultLevel = 'B2';
-    else if (percentage >= 70) resultLevel = 'B1';
-    else if (percentage >= 50) resultLevel = 'A2';
-    else resultLevel = 'A1';
+    // Band mastery: walk A1 -> B2 and stop at the first band below threshold.
+    // The result is the highest consecutive band the candidate has mastered.
+    let resultLevel = 'A1';
+    for (const band of BAND_ORDER) {
+      const b = bandScores[band];
+      if (b && b.max > 0 && b.score / b.max >= BAND_MASTERY_THRESHOLD) {
+        resultLevel = band;
+      } else {
+        break;
+      }
+    }
 
     // Save attempt to database
     const { error } = await supabase.from('test_attempts').insert({
@@ -159,11 +180,11 @@ export default function PlacementTest() {
                 <div className="mb-8 flex flex-wrap justify-center gap-6">
                   <div className="flex items-center gap-2">
                     <Clock className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium">15 minutes</span>
+                    <span className="text-sm font-medium">20 minutes</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium">20 questions</span>
+                    <span className="text-sm font-medium">32 questions</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />

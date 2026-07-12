@@ -40,7 +40,7 @@ const steps = [
     chip: "bg-[#7FD6C2]",
     title: "Find your level.",
     description:
-      "A free ~15 minute placement test recommends your CEFR level, from A1 to B2, before you spend anything.",
+      "A free ~20 minute placement test recommends your CEFR level, from A1 to B2, before you spend anything.",
     media: <PlacementMockup />,
   },
   {
