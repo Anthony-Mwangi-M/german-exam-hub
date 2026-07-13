@@ -13,6 +13,8 @@ import PlacementTest from "./pages/PlacementTest";
 import PlacementTestResults from "./pages/PlacementTestResults";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Purchase from "./pages/Purchase";
 import TakeTest from "./pages/TakeTest";
 import TestResults from "./pages/TestResults";
@@ -41,6 +43,8 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/signin" element={<SignIn />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route
                 path="/dashboard"
                 element={
