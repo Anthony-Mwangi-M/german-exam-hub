@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mic, Square, Play, Trash2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -8,6 +8,12 @@ interface VoiceRecorderProps {
   onRecordingClear?: () => void;
   disabled?: boolean;
   maxDurationSeconds?: number;
+  /**
+   * Recording already saved for this question, shown for playback when the
+   * user navigates back. Render with a per-question `key` so each question
+   * gets its own recorder instance.
+   */
+  existingRecording?: Blob | null;
 }
 
 function getRecordingMimeType(): string {
@@ -20,13 +26,25 @@ export function VoiceRecorder({
   onRecordingClear,
   disabled,
   maxDurationSeconds = 240,
+  existingRecording = null,
 }: VoiceRecorderProps) {
   const [isRecording, setIsRecording] = useState(false);
-  const [audioURL, setAudioURL] = useState<string>('');
+  const [audioURL, setAudioURL] = useState<string>(() =>
+    existingRecording ? URL.createObjectURL(existingRecording) : ''
+  );
   const [error, setError] = useState<string>('');
   const mediaRecorder = useRef<MediaRecorder | null>(null);
   const audioChunks = useRef<Blob[]>([]);
   const maxDurationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const audioURLRef = useRef(audioURL);
+  audioURLRef.current = audioURL;
+
+  // Release the object URL when this recorder unmounts (question change)
+  useEffect(() => {
+    return () => {
+      if (audioURLRef.current) URL.revokeObjectURL(audioURLRef.current);
+    };
+  }, []);
 
   const startRecording = async () => {
     try {

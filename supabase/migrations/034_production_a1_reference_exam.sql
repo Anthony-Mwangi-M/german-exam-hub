@@ -253,7 +253,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1, Sich vorstellen\n\nStellen Sie sich mit den Stichwörtern vor:\n• Name\n• Land\n• Wohnort\n• Sprachen\n• Beruf',
+  E'Teil 1: Sich vorstellen\n\nStellen Sie sich mit den Stichwörtern vor:\n• Name\n• Land\n• Wohnort\n• Sprachen\n• Beruf',
   'speaking',
   'Erwartung: Kurze, einfache Sätze zu jedem Stichwort, ca. 1 Minute.',
   3, 1, 'speaking',
@@ -267,7 +267,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2, Fragen und Antworten\n\nThema: Ihre Arbeit\n\nStellen Sie eine Frage zum Thema und beantworten Sie auch die folgende Frage:\n„Wo arbeiten Sie?"',
+  E'Teil 2: Fragen und Antworten\n\nThema: Ihre Arbeit\n\nStellen Sie eine Frage zum Thema und beantworten Sie auch die folgende Frage:\n„Wo arbeiten Sie?"',
   'speaking',
   'Erwartung: Eine eigene Frage zum Thema formulieren und die gestellte Frage in einem vollständigen Satz beantworten.',
   4, 2, 'speaking',
@@ -281,7 +281,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3, Bitten formulieren und reagieren\n\nBildkarte: Ein Fenster ist geschlossen.\n\nFormulieren Sie eine Bitte an einen Kollegen (z.B. „Bitte öffnen Sie das Fenster.") und reagieren Sie auf die Bitte eines Kollegen: „Können Sie mir bitte helfen?"',
+  E'Teil 3: Bitten formulieren und reagieren\n\nBildkarte: Ein Fenster ist geschlossen.\n\nFormulieren Sie eine Bitte an einen Kollegen (z.B. „Bitte öffnen Sie das Fenster.") und reagieren Sie auf die Bitte eines Kollegen: „Können Sie mir bitte helfen?"',
   'speaking',
   'Erwartung: Höfliche Bitte/Aufforderung formulieren (Bitte + Imperativ oder „Können Sie...") und angemessen auf eine Bitte reagieren (zustimmen/ablehnen).',
   5, 3, 'speaking',

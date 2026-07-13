@@ -474,6 +474,8 @@ export default function TakeTest() {
 
                 {currentQuestion.question_type === 'speaking' && (
                   <VoiceRecorder
+                    key={currentQuestion.id}
+                    existingRecording={speakingBlobs[currentQuestion.id] ?? null}
                     onRecordingComplete={(audioBlob) => {
                       setSpeakingBlobs((prev) => ({ ...prev, [currentQuestion.id]: audioBlob }));
                       handleAnswerChange(currentQuestion.id, SPEAKING_ANSWER_MARKER);

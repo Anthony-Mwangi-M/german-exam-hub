@@ -310,7 +310,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1, Fragen und Antworten\n\nStellen Sie sich vor und beantworten Sie:\n• Wie heißen Sie und woher kommen Sie?\n• Wo wohnen Sie jetzt?\n• Was machen Sie beruflich?\n• Welche Sprachen sprechen Sie?',
+  E'Teil 1: Fragen und Antworten\n\nStellen Sie sich vor und beantworten Sie:\n• Wie heißen Sie und woher kommen Sie?\n• Wo wohnen Sie jetzt?\n• Was machen Sie beruflich?\n• Welche Sprachen sprechen Sie?',
   'speaking',
   'Erwartung: Name, Herkunft, Wohnort, Beruf/Studium, Sprachen, in zusammenhängenden Sätzen, ca. 2 Minuten.',
   1, 1, 'speaking',
@@ -324,7 +324,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2, Kurze Präsentation\n\nSprechen Sie 2 Minuten über Ihr Lieblingshobby.\n• Was ist das Hobby?\n• Wie oft machen Sie das?\n• Warum gefällt es Ihnen?',
+  E'Teil 2: Kurze Präsentation\n\nSprechen Sie 2 Minuten über Ihr Lieblingshobby.\n• Was ist das Hobby?\n• Wie oft machen Sie das?\n• Warum gefällt es Ihnen?',
   'speaking',
   'Erwartung: Klare Struktur (Einleitung, Details, Meinung), Zeitformen passend, ca. 2 Minuten.',
   2, 2, 'speaking',
@@ -338,7 +338,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3, Gemeinsam planen\n\nIhr Kollege möchte am Wochenende einen Ausflug machen. Planen Sie gemeinsam:\n• Wohin möchten Sie fahren?\n• Wann treffen Sie sich?\n• Was nehmen Sie mit?\n• Wie kommen Sie hin?',
+  E'Teil 3: Gemeinsam planen\n\nIhr Kollege möchte am Wochenende einen Ausflug machen. Planen Sie gemeinsam:\n• Wohin möchten Sie fahren?\n• Wann treffen Sie sich?\n• Was nehmen Sie mit?\n• Wie kommen Sie hin?',
   'speaking',
   'Erwartung: Vorschläge machen, zustimmen/ablehnen, Zeit und Ort vereinbaren, Partnerdialog simuliert.',
   3, 3, 'speaking',

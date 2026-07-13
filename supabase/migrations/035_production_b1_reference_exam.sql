@@ -304,7 +304,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1, Gemeinsam etwas planen\n\nEin Kollege verlässt das Team. Planen Sie gemeinsam mit einem Partner eine Abschiedsfeier:\n• Wann und wo soll die Feier stattfinden?\n• Wer bringt was mit (Essen, Getränke, Geschenk)?\n• Wer sagt dem Kollegen Bescheid?',
+  E'Teil 1: Gemeinsam etwas planen\n\nEin Kollege verlässt das Team. Planen Sie gemeinsam mit einem Partner eine Abschiedsfeier:\n• Wann und wo soll die Feier stattfinden?\n• Wer bringt was mit (Essen, Getränke, Geschenk)?\n• Wer sagt dem Kollegen Bescheid?',
   'speaking',
   'Erwartung: Vorschläge machen, auf Vorschläge des Partners reagieren, gemeinsam zu einer Entscheidung kommen (circa 3 Minuten).',
   4, 1, 'speaking',
@@ -318,7 +318,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2, Ein Thema präsentieren\n\nHalten Sie eine strukturierte Präsentation (circa 3 Minuten) zum Thema: „Sollte man im Homeoffice arbeiten dürfen?"\n\nGehen Sie auf folgende Punkte ein:\n• Einleitung: Worum geht es?\n• Vorteile und Nachteile\n• Ihre persönliche Situation/Meinung\n• Schluss',
+  E'Teil 2: Ein Thema präsentieren\n\nHalten Sie eine strukturierte Präsentation (circa 3 Minuten) zum Thema: „Sollte man im Homeoffice arbeiten dürfen?"\n\nGehen Sie auf folgende Punkte ein:\n• Einleitung: Worum geht es?\n• Vorteile und Nachteile\n• Ihre persönliche Situation/Meinung\n• Schluss',
   'speaking',
   'Erwartung: Klare Gliederung (Einleitung, Pro/Contra, persönliche Situation, Schluss), zusammenhängender Vortrag ohne Dialogpartner.',
   5, 2, 'speaking',
@@ -332,7 +332,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3, Feedback geben\n\nIhr Partner hat gerade seine Präsentation gehalten. Geben Sie kurzes, höfliches Feedback und stellen Sie eine inhaltliche Frage zur Präsentation.',
+  E'Teil 3: Feedback geben\n\nIhr Partner hat gerade seine Präsentation gehalten. Geben Sie kurzes, höfliches Feedback und stellen Sie eine inhaltliche Frage zur Präsentation.',
   'speaking',
   'Erwartung: Höfliches, konkretes Feedback (z.B. „Mir hat gefallen, dass...") und eine sinnvolle Anschlussfrage zum Thema.',
   6, 3, 'speaking',

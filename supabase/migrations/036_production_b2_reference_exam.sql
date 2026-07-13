@@ -288,7 +288,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1, Vortrag halten\n\nHalten Sie einen kurzen Vortrag (circa 4 Minuten) zum Thema: „Sollten Berufsabschlüsse aus dem Ausland automatisch anerkannt werden?"\n\nGehen Sie ein auf:\n• Ihre Position und Begründung\n• Mögliche Alternativen zur automatischen Anerkennung\n• Beantworten Sie am Ende eine Nachfrage des Prüfers/der Prüferin',
+  E'Teil 1: Vortrag halten\n\nHalten Sie einen kurzen Vortrag (circa 4 Minuten) zum Thema: „Sollten Berufsabschlüsse aus dem Ausland automatisch anerkannt werden?"\n\nGehen Sie ein auf:\n• Ihre Position und Begründung\n• Mögliche Alternativen zur automatischen Anerkennung\n• Beantworten Sie am Ende eine Nachfrage des Prüfers/der Prüferin',
   'speaking',
   'Erwartung: Strukturierter Monolog mit klarer Position, Begründung, Alternativen und angemessener Reaktion auf eine Rückfrage.',
   3, 1, 'speaking',
@@ -302,7 +302,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2, Diskussion führen\n\nDiskutieren Sie mit einem Partner/einer Partnerin (circa 5 Minuten): „Sollten Unternehmen internationale Fachkräfte bei der Wohnungssuche aktiv unterstützen?"\n\nVertreten Sie Ihren Standpunkt, gehen Sie auf die Argumente Ihres Partners ein und versuchen Sie, am Ende einen Kompromiss zu finden.',
+  E'Teil 2: Diskussion führen\n\nDiskutieren Sie mit einem Partner/einer Partnerin (circa 5 Minuten): „Sollten Unternehmen internationale Fachkräfte bei der Wohnungssuche aktiv unterstützen?"\n\nVertreten Sie Ihren Standpunkt, gehen Sie auf die Argumente Ihres Partners ein und versuchen Sie, am Ende einen Kompromiss zu finden.',
   'speaking',
   'Erwartung: Aktive Diskussion mit Standpunktvertretung, Eingehen auf Gegenargumente und gemeinsamer Kompromissfindung.',
   4, 2, 'speaking',
