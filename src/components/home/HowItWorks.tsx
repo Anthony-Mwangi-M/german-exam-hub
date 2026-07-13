@@ -48,7 +48,7 @@ const steps = [
     chip: "bg-[#FFD333]",
     title: "Practice the real format.",
     description:
-      "Every module mirrors the official Goethe structure — the same Teile, task types, word counts, and timing.",
+      "Every module mirrors the official Goethe structure: the same Teile, task types, word counts, and timing.",
     media: (
       <div className="dp-photo aspect-[16/10]">
         <img src={marketingImages.levels.A2} alt="Goethe-style practice test" />

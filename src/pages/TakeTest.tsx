@@ -243,7 +243,7 @@ export default function TakeTest() {
         0
       );
 
-      // Open-ended questions are pending — score reflects MCQ only
+      // Open-ended questions are pending; score reflects MCQ only
       const openEndedCount = questions.filter(
         q => q.question_type === 'essay' || q.question_type === 'speaking'
       ).length;

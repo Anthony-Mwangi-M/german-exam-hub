@@ -3,7 +3,7 @@
 -- Module metadata (honest counts and durations)
 UPDATE test_modules tm
 SET
-  title = 'A1 Lesen – Übungstest (Goethe)',
+  title = 'A1 Lesen Übungstest (Goethe)',
   description = '3 Teile: Richtig/Falsch, Informationen finden, Richtig/Falsch. 15 Aufgaben, 25 Minuten.',
   question_count = 15,
   duration_minutes = 25,
@@ -14,7 +14,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'A1 Schreiben – Übungstest (Goethe)',
+  title = 'A1 Schreiben Übungstest (Goethe)',
   description = '2 Teile: Formular ausfüllen, kurze Nachricht (circa 30 Wörter). 20 Minuten.',
   question_count = 2,
   duration_minutes = 20,
@@ -25,7 +25,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'A1 Sprechen – Übungstest (Goethe)',
+  title = 'A1 Sprechen Übungstest (Goethe)',
   description = '3 Teile: Sich vorstellen, Fragen & Antworten, Bitten formulieren. 15 Minuten.',
   question_count = 3,
   duration_minutes = 15,
@@ -44,7 +44,7 @@ DELETE FROM questions WHERE test_module_id IN (
 
 -- ─── LESEN (15 items, 3 Teile) ───────────────────────────────────────────────
 
--- Teil 1: Richtig/Falsch — zwei kurze Nachrichten
+-- Teil 1: Richtig/Falsch, zwei kurze Nachrichten
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
   E'Nachricht von Fatima:\n„Hallo! Mein Bus kommt heute später. Ich bin um 9 Uhr im Büro, nicht um 8 Uhr. Bitte sag das Herrn Müller. Bis gleich, Fatima."\n\nAussage: Fatima kommt heute um 8 Uhr.',
@@ -156,7 +156,7 @@ SELECT tm.id,
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'A1' AND s.code = 'reading';
 
--- Teil 3: Richtig/Falsch — öffentlicher Aushang
+-- Teil 3: Richtig/Falsch, öffentlicher Aushang
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
   E'Aushang am Sprachzentrum:\n„Der Deutschkurs A1 ist jetzt im Raum 204, nicht mehr im Raum 105. Der Kurs beginnt weiterhin um 18 Uhr. Bitte bringen Sie Ihr Kursbuch mit."\n\nAussage: Der Kurs ist jetzt in Raum 105.',
@@ -196,7 +196,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Richtig',
-  'Der Raum ist jetzt 204 statt 105 — er hat sich geändert.',
+  'Der Raum ist jetzt 204 statt 105, er hat sich geändert.',
   14, 3, 'true_false', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'A1' AND s.code = 'reading';
@@ -207,7 +207,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Falsch',
-  'Die Uhrzeit bleibt gleich (18 Uhr) — nur der Raum ändert sich.',
+  'Die Uhrzeit bleibt gleich (18 Uhr), nur der Raum ändert sich.',
   15, 3, 'true_false', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'A1' AND s.code = 'reading';
@@ -253,7 +253,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1 — Sich vorstellen\n\nStellen Sie sich mit den Stichwörtern vor:\n• Name\n• Land\n• Wohnort\n• Sprachen\n• Beruf',
+  E'Teil 1, Sich vorstellen\n\nStellen Sie sich mit den Stichwörtern vor:\n• Name\n• Land\n• Wohnort\n• Sprachen\n• Beruf',
   'speaking',
   'Erwartung: Kurze, einfache Sätze zu jedem Stichwort, ca. 1 Minute.',
   3, 1, 'speaking',
@@ -267,7 +267,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2 — Fragen und Antworten\n\nThema: Ihre Arbeit\n\nStellen Sie eine Frage zum Thema und beantworten Sie auch die folgende Frage:\n„Wo arbeiten Sie?"',
+  E'Teil 2, Fragen und Antworten\n\nThema: Ihre Arbeit\n\nStellen Sie eine Frage zum Thema und beantworten Sie auch die folgende Frage:\n„Wo arbeiten Sie?"',
   'speaking',
   'Erwartung: Eine eigene Frage zum Thema formulieren und die gestellte Frage in einem vollständigen Satz beantworten.',
   4, 2, 'speaking',
@@ -281,7 +281,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3 — Bitten formulieren und reagieren\n\nBildkarte: Ein Fenster ist geschlossen.\n\nFormulieren Sie eine Bitte an einen Kollegen (z.B. „Bitte öffnen Sie das Fenster.") und reagieren Sie auf die Bitte eines Kollegen: „Können Sie mir bitte helfen?"',
+  E'Teil 3, Bitten formulieren und reagieren\n\nBildkarte: Ein Fenster ist geschlossen.\n\nFormulieren Sie eine Bitte an einen Kollegen (z.B. „Bitte öffnen Sie das Fenster.") und reagieren Sie auf die Bitte eines Kollegen: „Können Sie mir bitte helfen?"',
   'speaking',
   'Erwartung: Höfliche Bitte/Aufforderung formulieren (Bitte + Imperativ oder „Können Sie...") und angemessen auf eine Bitte reagieren (zustimmen/ablehnen).',
   5, 3, 'speaking',

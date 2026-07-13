@@ -3,7 +3,7 @@
 -- Module metadata (honest counts and durations)
 UPDATE test_modules tm
 SET
-  title = 'A2 Lesen – Übungstest (Goethe)',
+  title = 'A2 Lesen Übungstest (Goethe)',
   description = '4 Teile: Anzeigen zuordnen, Texte verstehen, Richtig/Falsch, Situationen zuordnen. 20 Aufgaben, 30 Minuten.',
   question_count = 20,
   duration_minutes = 30,
@@ -14,7 +14,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'A2 Schreiben – Übungstest (Goethe)',
+  title = 'A2 Schreiben Übungstest (Goethe)',
   description = '2 Teile: kurze Nachricht und halbformelle E-Mail mit Leitpunkten. 30 Minuten.',
   question_count = 2,
   duration_minutes = 30,
@@ -25,7 +25,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'A2 Sprechen – Übungstest (Goethe)',
+  title = 'A2 Sprechen Übungstest (Goethe)',
   description = '3 Teile: Fragen & Antworten, Präsentation, gemeinsam planen. 15 Minuten.',
   question_count = 3,
   duration_minutes = 15,
@@ -50,7 +50,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, points
 )
 SELECT tm.id,
-  E'Situation: Sie möchten am Samstag mit Ihren Kindern schwimmen.\n\nAnzeigen:\na) Schwimmbad „Aqua Fun" — Sa–So 10–18 Uhr, Kinder unter 6 gratis\nb) Fitnessstudio PowerGym — nur Erwachsene, Monatskarte 49 €\nc) Deutschkurs A2 — Mo–Mi 18–20 Uhr, Anmeldung online\nd) 2-Zimmer-Wohnung — 75 m², Haustiere nicht erlaubt\n\nWelche Anzeige passt?',
+  E'Situation: Sie möchten am Samstag mit Ihren Kindern schwimmen.\n\nAnzeigen:\na) Schwimmbad „Aqua Fun", Sa–So 10–18 Uhr, Kinder unter 6 gratis\nb) Fitnessstudio PowerGym, nur Erwachsene, Monatskarte 49 €\nc) Deutschkurs A2, Mo–Mi 18–20 Uhr, Anmeldung online\nd) 2-Zimmer-Wohnung, 75 m², Haustiere nicht erlaubt\n\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a) Schwimmbad „Aqua Fun"', 'b) Fitnessstudio PowerGym', 'c) Deutschkurs A2', 'd) 2-Zimmer-Wohnung'),
   'a) Schwimmbad „Aqua Fun"',
@@ -61,18 +61,18 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Situation: Sie suchen einen Nebenjob am Abend in einem Geschäft.\n\nAnzeigen:\na) Restaurant „Zur Sonne" — sucht Servicekraft, nur abends und am Wochenende\nb) Büro sucht Sekretär/in — Mo–Fr 9–17 Uhr\nc) Kindergarten sucht Erzieher/in — Vollzeit\nd) Autowerkstatt — sucht Mechaniker/in mit Erfahrung\n\nWelche Anzeige passt?',
+  E'Situation: Sie suchen einen Nebenjob am Abend in einem Geschäft.\n\nAnzeigen:\na) Restaurant „Zur Sonne", sucht Servicekraft, nur abends und am Wochenende\nb) Büro sucht Sekretär/in, Mo–Fr 9–17 Uhr\nc) Kindergarten sucht Erzieher/in, Vollzeit\nd) Autowerkstatt, sucht Mechaniker/in mit Erfahrung\n\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a) Restaurant „Zur Sonne"', 'b) Büro sucht Sekretär/in', 'c) Kindergarten sucht Erzieher/in', 'd) Autowerkstatt'),
   'a) Restaurant „Zur Sonne"',
-  'Das Restaurant sucht Abend- und Wochenendarbeit — passend für einen Nebenjob am Abend.',
+  'Das Restaurant sucht Abend- und Wochenendarbeit, passend für einen Nebenjob am Abend.',
   2, 1, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Situation: Ihr Deutsch ist A2 und Sie möchten abends einen Kurs besuchen.\n\nAnzeigen:\na) Integrationskurs B1 — täglich 9–12 Uhr\nb) Abendkurs Deutsch A2 — Di+Do 18:30–20:30 Uhr\nc) Nachhilfe Mathematik — für Schüler\nd) Yoga für Anfänger — Sa 10 Uhr\n\nWelche Anzeige passt?',
+  E'Situation: Ihr Deutsch ist A2 und Sie möchten abends einen Kurs besuchen.\n\nAnzeigen:\na) Integrationskurs B1, täglich 9–12 Uhr\nb) Abendkurs Deutsch A2, Di+Do 18:30–20:30 Uhr\nc) Nachhilfe Mathematik, für Schüler\nd) Yoga für Anfänger, Sa 10 Uhr\n\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a) Integrationskurs B1', 'b) Abendkurs Deutsch A2', 'c) Nachhilfe Mathematik', 'd) Yoga für Anfänger'),
   'b) Abendkurs Deutsch A2',
@@ -83,7 +83,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Situation: Sie haben eine kleine Katze und suchen eine Wohnung.\n\nAnzeigen:\na) WG-Zimmer — 420 € warm, Haustiere erlaubt\nb) 1-Zimmer-Wohnung — 650 €, keine Haustiere\nc) Studentenwohnheim — nur für Studierende\nd) Ferienwohnung — nur kurzfristig\n\nWelche Anzeige passt?',
+  E'Situation: Sie haben eine kleine Katze und suchen eine Wohnung.\n\nAnzeigen:\na) WG-Zimmer, 420 € warm, Haustiere erlaubt\nb) 1-Zimmer-Wohnung, 650 €, keine Haustiere\nc) Studentenwohnheim, nur für Studierende\nd) Ferienwohnung, nur kurzfristig\n\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a) WG-Zimmer', 'b) 1-Zimmer-Wohnung', 'c) Studentenwohnheim', 'd) Ferienwohnung'),
   'a) WG-Zimmer',
@@ -94,7 +94,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Situation: Sie möchten am Sonntag ein Museum besuchen.\n\nAnzeigen:\na) Stadtmuseum — Di–So 10–18 Uhr, Mo geschlossen\nb) Disco „Nightlife" — Fr+Sa ab 22 Uhr\nc) Sprachcafé — jeden Mittwoch 19 Uhr\nd) Wochenmarkt — nur samstags 7–14 Uhr\n\nWelche Anzeige passt?',
+  E'Situation: Sie möchten am Sonntag ein Museum besuchen.\n\nAnzeigen:\na) Stadtmuseum, Di–So 10–18 Uhr, Mo geschlossen\nb) Disco „Nightlife", Fr+Sa ab 22 Uhr\nc) Sprachcafé, jeden Mittwoch 19 Uhr\nd) Wochenmarkt, nur samstags 7–14 Uhr\n\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a) Stadtmuseum', 'b) Disco „Nightlife"', 'c) Sprachcafé', 'd) Wochenmarkt'),
   'a) Stadtmuseum',
@@ -150,10 +150,10 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Einladung:\n\n„Wir feiern am 12. Juli um 15 Uhr unsere Haus-Einweihung. Adresse: Musterstraße 8. Bitte bringen Sie keine Geschenke mit — Ihre Anwesenheit ist uns Geschenk genug. Um Rückmeldung bis 5. Juli bitten wir."\n\nWas sollen die Gäste mitbringen?',
+  E'Einladung:\n\n„Wir feiern am 12. Juli um 15 Uhr unsere Haus-Einweihung. Adresse: Musterstraße 8. Bitte bringen Sie keine Geschenke mit, Ihre Anwesenheit ist uns Geschenk genug. Um Rückmeldung bis 5. Juli bitten wir."\n\nWas sollen die Gäste mitbringen?',
   'multiple_choice',
-  jsonb_build_array('Nichts — keine Geschenke', 'Blumen und Wein', 'Essen für alle', 'Eine Karte und Geld'),
-  'Nichts — keine Geschenke',
+  jsonb_build_array('Nichts, keine Geschenke', 'Blumen und Wein', 'Essen für alle', 'Eine Karte und Geld'),
+  'Nichts, keine Geschenke',
   'Im Text: „bringt Sie keine Geschenke mit".',
   10, 2, 'mcq', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
@@ -218,7 +218,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 -- Teil 4: Situationen den Anzeigen zuordnen (gemeinsamer Anzeigenpool a–f)
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Fahrrad hat einen Platten und Sie brauchen es morgen wieder.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Nachhilfe Deutsch, Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut", günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause, Reparatur innerhalb von 24 Stunden\nd) Volkshochschule, Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg, neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online, gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Fahrrad hat einen Platten und Sie brauchen es morgen wieder.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'c',
@@ -229,7 +229,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie möchten am Computer besser arbeiten lernen, haben aber noch nie einen Kurs gemacht.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Nachhilfe Deutsch, Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut", günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause, Reparatur innerhalb von 24 Stunden\nd) Volkshochschule, Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg, neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online, gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie möchten am Computer besser arbeiten lernen, haben aber noch nie einen Kurs gemacht.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'd',
@@ -240,7 +240,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie haben starke Zahnschmerzen und noch keinen Arzt in der Stadt.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Nachhilfe Deutsch, Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut", günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause, Reparatur innerhalb von 24 Stunden\nd) Volkshochschule, Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg, neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online, gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie haben starke Zahnschmerzen und noch keinen Arzt in der Stadt.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'e',
@@ -251,7 +251,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie ziehen bald in eine neue Wohnung und brauchen günstig einen Tisch und einen Schrank.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Nachhilfe Deutsch, Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut", günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause, Reparatur innerhalb von 24 Stunden\nd) Volkshochschule, Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg, neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online, gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Sie ziehen bald in eine neue Wohnung und brauchen günstig einen Tisch und einen Schrank.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'f',
@@ -262,7 +262,7 @@ WHERE l.code = 'A2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Nachhilfe Deutsch — Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut" — günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause — Reparatur innerhalb von 24 Stunden\nd) Volkshochschule — Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg — neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online — gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Deutsch ist noch nicht gut genug und Sie möchten abends einzeln üben.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Nachhilfe Deutsch, Einzelunterricht, auch abends, 15 €/Stunde\nb) Second-Hand-Laden „Nochmal gut", günstige Kleidung, Mo–Sa\nc) Fahrradwerkstatt Krause, Reparatur innerhalb von 24 Stunden\nd) Volkshochschule, Computerkurs für Anfänger, Anmeldung nötig\ne) Zahnarztpraxis Dr. Berg, neue Patienten willkommen, auch ohne Termin\nf) Möbelbörse online, gebrauchte Möbel günstig kaufen und verkaufen\n\nSituation: Ihr Deutsch ist noch nicht gut genug und Sie möchten abends einzeln üben.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'a',
@@ -310,9 +310,9 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1 — Fragen und Antworten\n\nStellen Sie sich vor und beantworten Sie:\n• Wie heißen Sie und woher kommen Sie?\n• Wo wohnen Sie jetzt?\n• Was machen Sie beruflich?\n• Welche Sprachen sprechen Sie?',
+  E'Teil 1, Fragen und Antworten\n\nStellen Sie sich vor und beantworten Sie:\n• Wie heißen Sie und woher kommen Sie?\n• Wo wohnen Sie jetzt?\n• Was machen Sie beruflich?\n• Welche Sprachen sprechen Sie?',
   'speaking',
-  'Erwartung: Name, Herkunft, Wohnort, Beruf/Studium, Sprachen — in zusammenhängenden Sätzen, ca. 2 Minuten.',
+  'Erwartung: Name, Herkunft, Wohnort, Beruf/Studium, Sprachen, in zusammenhängenden Sätzen, ca. 2 Minuten.',
   1, 1, 'speaking',
   '{"task_achievement":"Alle Fragen beantwortet?","coherence":"Flüssige Sätze, nicht nur Stichworte","vocabulary":"A2 Alltagswortschatz","grammar":"Präsens, einfache Nebensätze"}'::jsonb,
   20
@@ -324,9 +324,9 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2 — Kurze Präsentation\n\nSprechen Sie 2 Minuten über Ihr Lieblingshobby.\n• Was ist das Hobby?\n• Wie oft machen Sie das?\n• Warum gefällt es Ihnen?',
+  E'Teil 2, Kurze Präsentation\n\nSprechen Sie 2 Minuten über Ihr Lieblingshobby.\n• Was ist das Hobby?\n• Wie oft machen Sie das?\n• Warum gefällt es Ihnen?',
   'speaking',
-  'Erwartung: Klare Struktur (Einleitung — Details — Meinung), Zeitformen passend, ca. 2 Minuten.',
+  'Erwartung: Klare Struktur (Einleitung, Details, Meinung), Zeitformen passend, ca. 2 Minuten.',
   2, 2, 'speaking',
   '{"task_achievement":"Alle Punkte behandelt?","coherence":"Logischer Aufbau der Präsentation","vocabulary":"Freizeit- und Hobbywortschatz","grammar":"Häufigkeit (oft, manchmal), weil-Sätze"}'::jsonb,
   20
@@ -338,9 +338,9 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3 — Gemeinsam planen\n\nIhr Kollege möchte am Wochenende einen Ausflug machen. Planen Sie gemeinsam:\n• Wohin möchten Sie fahren?\n• Wann treffen Sie sich?\n• Was nehmen Sie mit?\n• Wie kommen Sie hin?',
+  E'Teil 3, Gemeinsam planen\n\nIhr Kollege möchte am Wochenende einen Ausflug machen. Planen Sie gemeinsam:\n• Wohin möchten Sie fahren?\n• Wann treffen Sie sich?\n• Was nehmen Sie mit?\n• Wie kommen Sie hin?',
   'speaking',
-  'Erwartung: Vorschläge machen, zustimmen/ablehnen, Zeit und Ort vereinbaren — Partnerdialog simuliert.',
+  'Erwartung: Vorschläge machen, zustimmen/ablehnen, Zeit und Ort vereinbaren, Partnerdialog simuliert.',
   3, 3, 'speaking',
   '{"task_achievement":"Alle Planungspunkte besprochen?","coherence":"Fragen und Vorschläge im Dialog","vocabulary":"Reisen, Transport, Zeit","grammar":"Modalverben (können, möchten), W-Fragen"}'::jsonb,
   20

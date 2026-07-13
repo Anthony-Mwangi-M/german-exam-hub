@@ -18,8 +18,8 @@ export function PlacementCTA() {
                 <span className="dp-mono text-brand">right level</span>
               </h2>
               <p className="mt-5 max-w-md text-lg font-medium leading-relaxed text-ink-muted">
-                Know your CEFR level in about 20 minutes — free, A1 to B2. Built from the
-                same question bank as our Goethe-style exams.
+                Know your CEFR level in about 20 minutes. The test is free, covers A1 to
+                B2, and is built from the same question bank as our Goethe-style exams.
               </p>
 
               <Button size="lg" className="mt-8 h-14 px-8 text-base" asChild>

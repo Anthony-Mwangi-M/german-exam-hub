@@ -1,6 +1,6 @@
 export const LISTENING_SKILL_CODE = 'listening';
 
-/** Hören is excluded from v1 — native-speaker audio coming post-launch. */
+/** Hören is excluded from v1; native-speaker audio comes post-launch. */
 export function isListeningComingSoon(skillCode: string | undefined): boolean {
   return skillCode === LISTENING_SKILL_CODE;
 }

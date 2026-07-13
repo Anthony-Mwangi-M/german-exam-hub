@@ -86,7 +86,7 @@ export default function About() {
           <div className="container text-center">
             <h2 className="mb-4 text-2xl font-bold text-foreground">Ready to Get Started?</h2>
             <p className="mb-8 text-muted-foreground">
-              Take our free placement test to discover your level and start your exam preparation journey.
+              Take our free placement test to find your level, then start practicing for the real exam.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="free" size="lg" asChild>

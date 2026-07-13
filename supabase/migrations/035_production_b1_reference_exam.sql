@@ -3,7 +3,7 @@
 -- Module metadata (honest counts and durations)
 UPDATE test_modules tm
 SET
-  title = 'B1 Lesen – Übungstest (Goethe)',
+  title = 'B1 Lesen Übungstest (Goethe)',
   description = '5 Teile: Richtig/Falsch, Multiple Choice, Anzeigen zuordnen, Meinungen zuordnen, Multiple Choice. 18 Aufgaben, 65 Minuten.',
   question_count = 18,
   duration_minutes = 65,
@@ -14,7 +14,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'B1 Schreiben – Übungstest (Goethe)',
+  title = 'B1 Schreiben Übungstest (Goethe)',
   description = '3 Aufgaben: informelle E-Mail, Meinung im Forum, formeller Brief. 60 Minuten.',
   question_count = 3,
   duration_minutes = 60,
@@ -25,7 +25,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'B1 Sprechen – Übungstest (Goethe)',
+  title = 'B1 Sprechen Übungstest (Goethe)',
   description = '3 Teile: gemeinsam planen, Präsentation halten, Feedback geben. 15 Minuten.',
   question_count = 3,
   duration_minutes = 15,
@@ -44,21 +44,21 @@ DELETE FROM questions WHERE test_module_id IN (
 
 -- ─── LESEN (18 items, 5 Teile) ───────────────────────────────────────────────
 
--- Teil 1: Richtig/Falsch — Blogeintrag
+-- Teil 1: Richtig/Falsch, Blogeintrag
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen — unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Autorin/der Autor war am ersten Tag ruhig und entspannt.',
+  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen, unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Autorin/der Autor war am ersten Tag ruhig und entspannt.',
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Falsch',
-  'Im Text: „Ich war so nervös!" — das Gegenteil von entspannt.',
+  'Im Text: „Ich war so nervös!", das Gegenteil von entspannt.',
   1, 1, 'true_false', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen — unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Kollegen waren ungeduldig, weil Namen vergessen wurden.',
+  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen, unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Kollegen waren ungeduldig, weil Namen vergessen wurden.',
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Falsch',
@@ -69,7 +69,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen — unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Am Nachmittag durfte die Autorin/der Autor allein und ohne Aufsicht arbeiten.',
+  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen, unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Am Nachmittag durfte die Autorin/der Autor allein und ohne Aufsicht arbeiten.',
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Falsch',
@@ -80,7 +80,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen — unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Autorin/der Autor bereut die Entscheidung für die Ausbildung.',
+  E'Blogeintrag:\n\n„Mein erster Arbeitstag in der Klinik. Ich war so nervös! Meine Stationsleitung, Frau Keller, hat mir alles genau gezeigt: die Zimmer, die Medikamentenschränke, die Übergabe am Morgen. Zuerst habe ich viele Namen vergessen, aber die Kollegen waren geduldig. Am Nachmittag durfte ich schon bei einer Patientin die Blutdruckmessung übernehmen, unter Aufsicht natürlich. Ich bin froh, dass ich mich für diese Ausbildung entschieden habe, auch wenn am Anfang vieles neu und anstrengend war."\n\nAussage: Die Autorin/der Autor bereut die Entscheidung für die Ausbildung.',
   'multiple_choice',
   jsonb_build_array('Richtig', 'Falsch'),
   'Falsch',
@@ -89,7 +89,7 @@ SELECT tm.id,
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
 
--- Teil 2: Multiple Choice (a/b/c) — Zeitungsartikel
+-- Teil 2: Multiple Choice (a/b/c), Zeitungsartikel
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
   E'Zeitungsartikel:\n\n„Fachkräftemangel in der Pflege: Immer mehr deutsche Kliniken stellen internationale Pflegekräfte ein. Laut einer aktuellen Studie fehlen bis 2030 rund 500.000 Pflegekräfte in Deutschland. Viele Krankenhäuser bieten deshalb spezielle Programme an: Sprachkurse, Anerkennungshilfe für ausländische Abschlüsse und Unterstützung bei der Wohnungssuche. Kritiker bemängeln jedoch, dass die Integration am Arbeitsplatz oft zu wenig begleitet wird und viele neue Kolleginnen und Kollegen sich am Anfang allein gelassen fühlen."\n\nWas ist laut Text ein Problem bei der Integration?',
@@ -126,7 +126,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 -- Teil 3: Anzeigen zuordnen (gemeinsamer Anzeigenpool a–f)
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Krankenkasse „GesundPlus" — Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum — 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit" — 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher" — auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte — erste Beratung kostenlos\n\nSituation: Sie ziehen nächste Woche um und brauchen samstags Hilfe.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Krankenkasse „GesundPlus", Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum, 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit", 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher", auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte, erste Beratung kostenlos\n\nSituation: Sie ziehen nächste Woche um und brauchen samstags Hilfe.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'e',
@@ -137,7 +137,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Krankenkasse „GesundPlus" — Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum — 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit" — 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher" — auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte — erste Beratung kostenlos\n\nSituation: Sie möchten Ihr berufliches Deutsch verbessern und arbeiten tagsüber.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Krankenkasse „GesundPlus", Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum, 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit", 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher", auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte, erste Beratung kostenlos\n\nSituation: Sie möchten Ihr berufliches Deutsch verbessern und arbeiten tagsüber.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'b',
@@ -148,7 +148,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Krankenkasse „GesundPlus" — Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum — 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit" — 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher" — auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte — erste Beratung kostenlos\n\nSituation: Sie fangen bald im Klinikum an und suchen ein günstiges Zimmer in der Nähe.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Krankenkasse „GesundPlus", Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum, 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit", 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher", auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte, erste Beratung kostenlos\n\nSituation: Sie fangen bald im Klinikum an und suchen ein günstiges Zimmer in der Nähe.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'c',
@@ -159,7 +159,7 @@ WHERE l.code = 'B1' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Anzeigen:\na) Krankenkasse „GesundPlus" — Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum — 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit" — 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher" — auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte — erste Beratung kostenlos\n\nSituation: Sie sind neu in Deutschland und müssen sich zum ersten Mal krankenversichern.\nWelche Anzeige passt?',
+  E'Anzeigen:\na) Krankenkasse „GesundPlus", Sonderkonditionen für Berufseinsteiger, Beratung auf Englisch möglich\nb) Abendkurs „Deutsch für den Beruf" B1–B2, Mo+Mi 19–21 Uhr\nc) WG-Zimmer nahe Klinikum, 380 € warm, ruhige Lage\nd) Fitnessstudio „PowerFit", 24/7 geöffnet, Probetraining kostenlos\ne) Umzugsservice „Schnell & Sicher", auch am Wochenende\nf) Steuerberatung für internationale Fachkräfte, erste Beratung kostenlos\n\nSituation: Sie sind neu in Deutschland und müssen sich zum ersten Mal krankenversichern.\nWelche Anzeige passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c', 'd', 'e', 'f'),
   'a',
@@ -175,7 +175,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Dafür', 'Dagegen'),
   'Dagegen',
-  'Timo nennt nur negative Punkte (laut, keine Konzentration) — er ist dagegen.',
+  'Timo nennt nur negative Punkte (laut, keine Konzentration), er ist dagegen.',
   12, 4, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
@@ -186,7 +186,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Dafür', 'Dagegen'),
   'Dafür',
-  'Larissa nennt Vorteile (schneller Austausch, weniger Isolation) — sie ist dafür.',
+  'Larissa nennt Vorteile (schneller Austausch, weniger Isolation), sie ist dafür.',
   13, 4, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
@@ -197,7 +197,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Dafür', 'Dagegen', 'Weder eindeutig dafür noch dagegen'),
   'Weder eindeutig dafür noch dagegen',
-  'Bruno sieht Vor- und Nachteile und wünscht sich eine Mischung — keine eindeutige Position.',
+  'Bruno sieht Vor- und Nachteile und wünscht sich eine Mischung, keine eindeutige Position.',
   14, 4, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
@@ -208,12 +208,12 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('Dafür', 'Dagegen'),
   'Dagegen',
-  'Aylin fordert die Abschaffung ausdrücklich — klar dagegen.',
+  'Aylin fordert die Abschaffung ausdrücklich, klar dagegen.',
   15, 4, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B1' AND s.code = 'reading';
 
--- Teil 5: Multiple Choice — betriebliche Anweisung
+-- Teil 5: Multiple Choice, betriebliche Anweisung
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
   E'Betriebsordnung (Auszug):\n\n„§4 Arbeitszeiten: Die vereinbarten Schichten sind verbindlich. Tauschwünsche müssen mindestens 48 Stunden vorher mit der Schichtleitung abgesprochen werden. §7 Krankmeldung: Bei Krankheit ist die Vorgesetzte spätestens 30 Minuten vor Schichtbeginn telefonisch zu informieren. Eine Krankschreibung ist ab dem dritten Krankheitstag vorzulegen."\n\nWann muss spätestens eine Krankschreibung vorgelegt werden?',
@@ -257,7 +257,7 @@ INSERT INTO questions (
 SELECT tm.id,
   'Erzählen Sie einer Freundin oder einem Freund von Ihrem ersten Arbeitstag in Deutschland. Schreiben Sie eine informelle E-Mail (circa 80 Wörter).',
   'essay',
-  'Beispiel: Liebe Amara, du fragst, wie mein erster Arbeitstag war — total aufregend! Ich war morgens sehr nervös, aber meine Kollegen waren total nett und haben mir alles gezeigt. Am schwierigsten war es, mir so viele neue Namen zu merken. Mittags haben wir zusammen in der Kantine gegessen, das war schön. Am Nachmittag durfte ich schon erste Aufgaben übernehmen. Ich glaube, das wird ein guter Job für mich. Ich erzähle dir mehr, wenn wir telefonieren! Viele Grüße, …',
+  'Beispiel: Liebe Amara, du fragst, wie mein erster Arbeitstag war, total aufregend! Ich war morgens sehr nervös, aber meine Kollegen waren total nett und haben mir alles gezeigt. Am schwierigsten war es, mir so viele neue Namen zu merken. Mittags haben wir zusammen in der Kantine gegessen, das war schön. Am Nachmittag durfte ich schon erste Aufgaben übernehmen. Ich glaube, das wird ein guter Job für mich. Ich erzähle dir mehr, wenn wir telefonieren! Viele Grüße, …',
   1, 1, 'essay', 70, 90,
   '["Beschreiben Sie Ihre Gefühle am ersten Tag","Berichten Sie von einem konkreten Ereignis","Sagen Sie, wie es weitergeht"]'::jsonb,
   '{"task_achievement":"Alle drei Leitpunkte behandelt?","coherence":"Zusammenhängender Text mit Konnektoren (weil, aber, deshalb)","vocabulary":"Wortschatz Arbeitswelt B1","grammar":"Perfekt/Präteritum, Nebensätze"}'::jsonb,
@@ -304,7 +304,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1 — Gemeinsam etwas planen\n\nEin Kollege verlässt das Team. Planen Sie gemeinsam mit einem Partner eine Abschiedsfeier:\n• Wann und wo soll die Feier stattfinden?\n• Wer bringt was mit (Essen, Getränke, Geschenk)?\n• Wer sagt dem Kollegen Bescheid?',
+  E'Teil 1, Gemeinsam etwas planen\n\nEin Kollege verlässt das Team. Planen Sie gemeinsam mit einem Partner eine Abschiedsfeier:\n• Wann und wo soll die Feier stattfinden?\n• Wer bringt was mit (Essen, Getränke, Geschenk)?\n• Wer sagt dem Kollegen Bescheid?',
   'speaking',
   'Erwartung: Vorschläge machen, auf Vorschläge des Partners reagieren, gemeinsam zu einer Entscheidung kommen (circa 3 Minuten).',
   4, 1, 'speaking',
@@ -318,9 +318,9 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2 — Ein Thema präsentieren\n\nHalten Sie eine strukturierte Präsentation (circa 3 Minuten) zum Thema: „Sollte man im Homeoffice arbeiten dürfen?"\n\nGehen Sie auf folgende Punkte ein:\n• Einleitung: Worum geht es?\n• Vorteile und Nachteile\n• Ihre persönliche Situation/Meinung\n• Schluss',
+  E'Teil 2, Ein Thema präsentieren\n\nHalten Sie eine strukturierte Präsentation (circa 3 Minuten) zum Thema: „Sollte man im Homeoffice arbeiten dürfen?"\n\nGehen Sie auf folgende Punkte ein:\n• Einleitung: Worum geht es?\n• Vorteile und Nachteile\n• Ihre persönliche Situation/Meinung\n• Schluss',
   'speaking',
-  'Erwartung: Klare Gliederung (Einleitung – Pro/Contra – persönliche Situation – Schluss), zusammenhängender Vortrag ohne Dialogpartner.',
+  'Erwartung: Klare Gliederung (Einleitung, Pro/Contra, persönliche Situation, Schluss), zusammenhängender Vortrag ohne Dialogpartner.',
   5, 2, 'speaking',
   '{"task_achievement":"Alle vier Teile der Präsentation enthalten?","coherence":"Klare Struktur mit Übergängen (erstens, außerdem, zusammenfassend)","vocabulary":"Präsentationswortschatz, Vor-/Nachteile","grammar":"Komplexe Sätze, Nebensätze"}'::jsonb,
   20
@@ -332,7 +332,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 3 — Feedback geben\n\nIhr Partner hat gerade seine Präsentation gehalten. Geben Sie kurzes, höfliches Feedback und stellen Sie eine inhaltliche Frage zur Präsentation.',
+  E'Teil 3, Feedback geben\n\nIhr Partner hat gerade seine Präsentation gehalten. Geben Sie kurzes, höfliches Feedback und stellen Sie eine inhaltliche Frage zur Präsentation.',
   'speaking',
   'Erwartung: Höfliches, konkretes Feedback (z.B. „Mir hat gefallen, dass...") und eine sinnvolle Anschlussfrage zum Thema.',
   6, 3, 'speaking',

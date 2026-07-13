@@ -156,7 +156,7 @@ export default function Dashboard() {
                     <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                     <h3 className="text-lg font-semibold mb-2">No tests purchased yet</h3>
                     <p className="text-muted-foreground mb-6">
-                      Browse our test modules and start your German learning journey
+                      Browse our test modules and take your first practice test
                     </p>
                     <Button asChild>
                       <Link to="/">Browse Tests</Link>

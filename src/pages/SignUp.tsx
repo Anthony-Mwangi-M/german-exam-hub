@@ -11,7 +11,7 @@ export default function SignUp() {
           </Link>
           <h2 className="mt-8 text-3xl font-semibold tracking-tight text-foreground">Create your account</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Start your German exam preparation journey
+            Create your account and start practicing
           </p>
         </div>
 

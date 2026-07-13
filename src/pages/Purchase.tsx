@@ -359,7 +359,7 @@ export default function Purchase() {
                 <CardDescription>
                   {mpesaEnabled
                     ? "Enter your M-Pesa phone number"
-                    : "No real charge — for testing before M-Pesa goes live"}
+                    : "No real charge. For testing before M-Pesa goes live."}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -443,7 +443,7 @@ export default function Purchase() {
                   </Button>
 
                   <p className="text-xs text-center text-muted-foreground">
-                    {mpesaEnabled ? "Secure payment powered by M-Pesa" : "Demo checkout — no payment provider required"}
+                    {mpesaEnabled ? "Secure payment powered by M-Pesa" : "Demo checkout, no payment provider required"}
                   </p>
                 </form>
               </CardContent>

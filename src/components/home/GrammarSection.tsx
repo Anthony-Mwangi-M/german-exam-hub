@@ -63,8 +63,9 @@ export function GrammarSection() {
               Learn with confidence
             </h2>
             <p className="mt-4 max-w-md font-medium leading-relaxed text-muted-foreground">
-              Grammar drills on cases, verb conjugation, word order, and more are coming —
-              quick checkpoints for revision before your exam, matched to your CEFR level.
+              Grammar drills on cases, verb conjugation, word order, and more are on the
+              way: quick checkpoints for revision before your exam, matched to your CEFR
+              level.
             </p>
             <span className="dp-pill-accent mt-6 inline-flex">Coming soon</span>
           </div>

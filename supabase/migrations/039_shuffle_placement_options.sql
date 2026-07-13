@@ -7,7 +7,7 @@
 --
 -- Safe here because every placement option is a self-contained answer
 -- string; grading compares values, not positions. Do NOT apply the same
--- blanket shuffle to the exam `questions` table — matching items there use
+-- blanket shuffle to the exam `questions` table, matching items there use
 -- ordered letter labels (a–j) that reference pools in the question text.
 
 UPDATE placement_test_questions

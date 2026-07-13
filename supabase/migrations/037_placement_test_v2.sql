@@ -1,9 +1,9 @@
 -- Placement test v2: fixes defective items and expands to 8 items per band
 --
 -- Fixes from review:
---   * "Guten ___!" had three valid answers (Tag/Morgen/Abend) — removed
---   * "Je mehr ..., ___ besser" listed both desto and umso — umso removed
---   * "Anstatt zu lernen, ___ er den ganzen Tag" had no past anchor — anchored
+--   * "Guten ___!" had three valid answers (Tag/Morgen/Abend), removed
+--   * "Je mehr ..., ___ besser" listed both desto and umso, umso removed
+--   * "Anstatt zu lernen, ___ er den ganzen Tag" had no past anchor, anchored
 --   * Politeness item (bitte) replaced with a grammar discriminator
 -- Additions:
 --   * 2 reading-comprehension items per band (matches "grammar and
@@ -33,7 +33,7 @@ BEGIN
      '["ein", "einen", "eine", "einem"]', 'einen', 1, 2),
     (a1_id, 'Ich habe ___ Auto.',
      '["nicht", "kein", "keine", "nichts"]', 'kein', 1, 3),
-    (a1_id, '___ wohnst du? — In Nairobi.',
+    (a1_id, '___ wohnst du?, In Nairobi.',
      '["Woher", "Wer", "Wo", "Wohin"]', 'Wo', 1, 4),
     (a1_id, 'Anna und Tom ___ aus Kenia.',
      '["kommt", "kommen", "kommst", "komme"]', 'kommen', 1, 5),

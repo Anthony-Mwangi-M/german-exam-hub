@@ -59,8 +59,8 @@ export default function Privacy() {
                 We do not sell your personal data. We share data only with:
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
-                <li><strong className="text-foreground">Supabase</strong> — database and authentication provider</li>
-                <li><strong className="text-foreground">Safaricom (M-Pesa/Daraja API)</strong> — payment processing</li>
+                <li><strong className="text-foreground">Supabase</strong>: database and authentication provider</li>
+                <li><strong className="text-foreground">Safaricom (M-Pesa/Daraja API)</strong>: payment processing</li>
               </ul>
               <p className="mt-2">
                 We may disclose information if required by law or to protect the safety of our users.

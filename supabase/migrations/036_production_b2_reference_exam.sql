@@ -3,7 +3,7 @@
 -- Module metadata (honest counts and durations)
 UPDATE test_modules tm
 SET
-  title = 'B2 Lesen – Übungstest (Goethe)',
+  title = 'B2 Lesen Übungstest (Goethe)',
   description = '5 Teile: Personen zuordnen, Detailverstehen, Multiple Choice, Sätze einfügen, Überschriften zuordnen. 18 Aufgaben, 65 Minuten.',
   question_count = 18,
   duration_minutes = 65,
@@ -14,7 +14,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'B2 Schreiben – Übungstest (Goethe)',
+  title = 'B2 Schreiben Übungstest (Goethe)',
   description = '2 Teile: Meinung im Forum, formelle geschäftliche Nachricht. 75 Minuten.',
   question_count = 2,
   duration_minutes = 75,
@@ -25,7 +25,7 @@ WHERE tm.level_id = l.id AND tm.skill_id = s.id
 
 UPDATE test_modules tm
 SET
-  title = 'B2 Sprechen – Übungstest (Goethe)',
+  title = 'B2 Sprechen Übungstest (Goethe)',
   description = '2 Teile: Vortrag halten, Diskussion führen. 15 Minuten.',
   question_count = 2,
   duration_minutes = 15,
@@ -47,7 +47,7 @@ DELETE FROM questions WHERE test_module_id IN (
 -- Teil 1: Vier Personen einer Aussage zuordnen (Personen können mehrmals gewählt werden)
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage — mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person konnte die Weiterbildung nur dank finanzieller Unterstützung des Arbeitgebers machen.\n\nWelche Person?',
+  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage, mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person konnte die Weiterbildung nur dank finanzieller Unterstützung des Arbeitgebers machen.\n\nWelche Person?',
   'multiple_choice',
   jsonb_build_array('Person A', 'Person B', 'Person C', 'Person D'),
   'Person C',
@@ -58,7 +58,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage — mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat wegen fehlender Zeit keine externe Weiterbildung gemacht.\n\nWelche Person?',
+  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage, mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat wegen fehlender Zeit keine externe Weiterbildung gemacht.\n\nWelche Person?',
   'multiple_choice',
   jsonb_build_array('Person A', 'Person B', 'Person C', 'Person D'),
   'Person B',
@@ -69,7 +69,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage — mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat finanziell von der Weiterbildung profitiert.\n\nWelche Person?',
+  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage, mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat finanziell von der Weiterbildung profitiert.\n\nWelche Person?',
   'multiple_choice',
   jsonb_build_array('Person A', 'Person B', 'Person C', 'Person D'),
   'Person A',
@@ -80,7 +80,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage — mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person konnte sich nur eine flexible, selbstfinanzierte Option leisten.\n\nWelche Person?',
+  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage, mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person konnte sich nur eine flexible, selbstfinanzierte Option leisten.\n\nWelche Person?',
   'multiple_choice',
   jsonb_build_array('Person A', 'Person B', 'Person C', 'Person D'),
   'Person D',
@@ -91,7 +91,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage — mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat trotz einer belastenden Doppelbelastung (Arbeit und Kurs) durchgehalten.\n\nWelche Person?',
+  E'Thema: Weiterbildung neben dem Beruf\n\nPerson A (Chidi): „Ich habe berufsbegleitend einen Meisterkurs gemacht, abends und am Wochenende. Es war anstrengend, aber mein Gehalt ist danach deutlich gestiegen."\nPerson B (Marta): „Für mich kam eine Weiterbildung neben der Arbeit nicht infrage, mit zwei kleinen Kindern hätte ich keine Zeit dafür gehabt. Ich habe stattdessen intern Erfahrung gesammelt."\nPerson C (Ravi): „Mein Arbeitgeber hat die Fortbildung komplett bezahlt und mir sogar Arbeitszeit dafür freigegeben. Ohne diese Unterstützung hätte ich es nicht geschafft."\nPerson D (Nasrin): „Ich habe online studiert, in meinem eigenen Tempo. Das war finanziell die einzige Option, die ich mir leisten konnte."\n\nDiese Person hat trotz einer belastenden Doppelbelastung (Arbeit und Kurs) durchgehalten.\n\nWelche Person?',
   'multiple_choice',
   jsonb_build_array('Person A', 'Person B', 'Person C', 'Person D'),
   'Person A',
@@ -100,10 +100,10 @@ SELECT tm.id,
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B2' AND s.code = 'reading';
 
--- Teil 2: Detailverstehen — Kolumne
+-- Teil 2: Detailverstehen, Kolumne
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre — wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWas ist die Hauptaussage der Kolumne?',
+  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre, wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWas ist die Hauptaussage der Kolumne?',
   'multiple_choice',
   jsonb_build_array('Bürokratie verhindert, dass Deutschland dringend benötigte Fachkräfte schnell gewinnt.', 'Es gibt in Deutschland keinen Fachkräftemangel.', 'Andere Länder haben komplizierte Anerkennungsverfahren.', 'Pilotprojekte sind grundsätzlich gescheitert.'),
   'Bürokratie verhindert, dass Deutschland dringend benötigte Fachkräfte schnell gewinnt.',
@@ -114,7 +114,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre — wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWas belegt laut Autor/in, dass schnellere Verfahren möglich wären?',
+  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre, wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWas belegt laut Autor/in, dass schnellere Verfahren möglich wären?',
   'multiple_choice',
   jsonb_build_array('Pilotprojekte in einzelnen Bundesländern', 'Eine internationale Studie', 'Aussagen von Bewerbern', 'Statistiken aus anderen Ländern'),
   'Pilotprojekte in einzelnen Bundesländern',
@@ -125,19 +125,19 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre — wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWelche Haltung nimmt der Autor/die Autorin gegenüber der aktuellen Situation ein?',
+  E'Kolumne:\n\n„Seit Jahren wird über den Fachkräftemangel geklagt, doch gleichzeitig scheitern viele qualifizierte Bewerberinnen und Bewerber aus dem Ausland an bürokratischen Hürden. Die Anerkennung ausländischer Abschlüsse dauert oft Monate, manchmal Jahre. Dabei zeigen Pilotprojekte in einzelnen Bundesländern, dass ein beschleunigtes Verfahren möglich wäre, wenn der politische Wille vorhanden ist. Stattdessen verlieren wir wertvolle Zeit, während andere Länder mit einfacheren Verfahren um dieselben Fachkräfte werben."\n\nWelche Haltung nimmt der Autor/die Autorin gegenüber der aktuellen Situation ein?',
   'multiple_choice',
-  jsonb_build_array('Kritisch — er/sie fordert schnellere Verfahren.', 'Zustimmend — die Verfahren sind angemessen.', 'Neutral — er/sie äußert keine Meinung.', 'Gleichgültig — das Thema sei unwichtig.'),
-  'Kritisch — er/sie fordert schnellere Verfahren.',
+  jsonb_build_array('Kritisch, er/sie fordert schnellere Verfahren.', 'Zustimmend, die Verfahren sind angemessen.', 'Neutral, er/sie äußert keine Meinung.', 'Gleichgültig, das Thema sei unwichtig.'),
+  'Kritisch, er/sie fordert schnellere Verfahren.',
   'Der Ton ist kritisch gegenüber der Bürokratie und fordert implizit eine Beschleunigung.',
   8, 2, 'mcq', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B2' AND s.code = 'reading';
 
--- Teil 3: Multiple Choice — Debattentext
+-- Teil 3: Multiple Choice, Debattentext
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel — etwa der Pflege oder Logistik — eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWas ist laut Text ein Haupteinwand der Kritiker?',
+  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel, etwa der Pflege oder Logistik, eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWas ist laut Text ein Haupteinwand der Kritiker?',
   'multiple_choice',
   jsonb_build_array('In Branchen mit Personalmangel sei eine Arbeitszeitverkürzung unrealistisch.', 'Die Vier-Tage-Woche erhöhe die Krankheitstage.', 'Pilotprojekte seien überflüssig.', 'Alle Branchen seien gleich betroffen.'),
   'In Branchen mit Personalmangel sei eine Arbeitszeitverkürzung unrealistisch.',
@@ -148,7 +148,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel — etwa der Pflege oder Logistik — eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWorin sind sich Befürworter und Kritiker laut Text einig?',
+  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel, etwa der Pflege oder Logistik, eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWorin sind sich Befürworter und Kritiker laut Text einig?',
   'multiple_choice',
   jsonb_build_array('Dass Pilotprojekte notwendig sind, um Daten zu sammeln.', 'Dass die Vier-Tage-Woche sofort eingeführt werden sollte.', 'Dass es in der Pflege keinen Personalmangel gibt.', 'Dass die Produktivität keine Rolle spielt.'),
   'Dass Pilotprojekte notwendig sind, um Daten zu sammeln.',
@@ -159,7 +159,7 @@ WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel — etwa der Pflege oder Logistik — eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWelche zwei Branchen werden als Beispiele für Personalmangel genannt?',
+  E'Debattenbeitrag:\n\n„Befürworter der Vier-Tage-Woche argumentieren, sie steigere die Produktivität und reduziere Krankheitstage. Kritiker halten dagegen, dass in Branchen mit Personalmangel, etwa der Pflege oder Logistik, eine Verkürzung der Arbeitszeit schlicht unrealistisch sei, solange nicht genügend Fachkräfte vorhanden sind. Beide Seiten sind sich jedoch einig, dass Pilotprojekte notwendig sind, um verlässliche Daten zu sammeln, bevor branchenübergreifende Entscheidungen getroffen werden."\n\nWelche zwei Branchen werden als Beispiele für Personalmangel genannt?',
   'multiple_choice',
   jsonb_build_array('Pflege und Logistik', 'IT und Finanzen', 'Bildung und Tourismus', 'Landwirtschaft und Handel'),
   'Pflege und Logistik',
@@ -220,18 +220,18 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c'),
   'c',
-  'Der Absatz beschreibt betriebliche Deutschkurse — passend zu „Sprachförderung am Arbeitsplatz wird ausgebaut".',
+  'Der Absatz beschreibt betriebliche Deutschkurse, passend zu „Sprachförderung am Arbeitsplatz wird ausgebaut".',
   16, 5, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B2' AND s.code = 'reading';
 
 INSERT INTO questions (test_module_id, question_text, question_type, options, correct_answer, explanation, "order", exam_part, task_type, points)
 SELECT tm.id,
-  E'Überschriften:\na) Weniger Bürokratie gefordert\nb) Neue Studie zur Mitarbeiterzufriedenheit\nc) Sprachförderung am Arbeitsplatz wird ausgebaut\n\nAbsatz: „Verbände fordern seit Langem, die Anerkennung ausländischer Berufsabschlüsse zu vereinfachen. Aktuell dauert das Verfahren in manchen Bundesländern über ein Jahr — ein Zeitraum, den sich weder Betriebe noch Bewerberinnen und Bewerber leisten können."\n\nWelche Überschrift passt?',
+  E'Überschriften:\na) Weniger Bürokratie gefordert\nb) Neue Studie zur Mitarbeiterzufriedenheit\nc) Sprachförderung am Arbeitsplatz wird ausgebaut\n\nAbsatz: „Verbände fordern seit Langem, die Anerkennung ausländischer Berufsabschlüsse zu vereinfachen. Aktuell dauert das Verfahren in manchen Bundesländern über ein Jahr, ein Zeitraum, den sich weder Betriebe noch Bewerberinnen und Bewerber leisten können."\n\nWelche Überschrift passt?',
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c'),
   'a',
-  'Der Absatz kritisiert lange Verfahren und fordert Vereinfachung — passend zu „Weniger Bürokratie gefordert".',
+  'Der Absatz kritisiert lange Verfahren und fordert Vereinfachung, passend zu „Weniger Bürokratie gefordert".',
   17, 5, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B2' AND s.code = 'reading';
@@ -242,7 +242,7 @@ SELECT tm.id,
   'multiple_choice',
   jsonb_build_array('a', 'b', 'c'),
   'b',
-  'Der Absatz referiert Umfrageergebnisse zur Zufriedenheit — passend zu „Neue Studie zur Mitarbeiterzufriedenheit".',
+  'Der Absatz referiert Umfrageergebnisse zur Zufriedenheit, passend zu „Neue Studie zur Mitarbeiterzufriedenheit".',
   18, 5, 'matching', 1
 FROM test_modules tm JOIN levels l ON tm.level_id = l.id JOIN skills s ON tm.skill_id = s.id
 WHERE l.code = 'B2' AND s.code = 'reading';
@@ -257,7 +257,7 @@ INSERT INTO questions (
 SELECT tm.id,
   'In einem Firmenforum wird diskutiert: „Sollten Unternehmen verpflichtend Deutschkurse für internationale Mitarbeitende anbieten?" Verfassen Sie einen Beitrag, in dem Sie verschiedene Perspektiven berücksichtigen und eine begründete Position entwickeln (circa 150 Wörter).',
   'essay',
-  'Beispiel: Die Frage, ob Unternehmen verpflichtend Deutschkurse anbieten sollten, wird kontrovers diskutiert. Befürworter argumentieren, dass gute Sprachkenntnisse die Sicherheit am Arbeitsplatz erhöhen und Missverständnisse reduzieren. Zudem fühlen sich Mitarbeitende oft schneller integriert, wenn sie aktiv unterstützt werden. Gegner wenden ein, dass verpflichtende Kurse zusätzlichen Zeitdruck erzeugen und nicht jeder das gleiche Lerntempo hat. Meiner Meinung nach überwiegen die Vorteile: Sprachförderung sollte jedoch freiwillig, aber attraktiv gestaltet sein — etwa durch bezahlte Arbeitszeit und flexible Kurszeiten. So profitieren sowohl Unternehmen als auch Mitarbeitende, ohne dass zusätzlicher Druck entsteht. Entscheidend ist, dass die Angebote praxisnah sind und tatsächlich zur beruflichen Kommunikation beitragen. Nur so lässt sich langfristig echte Integration erreichen, statt reiner Pflichterfüllung.',
+  'Beispiel: Die Frage, ob Unternehmen verpflichtend Deutschkurse anbieten sollten, wird kontrovers diskutiert. Befürworter argumentieren, dass gute Sprachkenntnisse die Sicherheit am Arbeitsplatz erhöhen und Missverständnisse reduzieren. Zudem fühlen sich Mitarbeitende oft schneller integriert, wenn sie aktiv unterstützt werden. Gegner wenden ein, dass verpflichtende Kurse zusätzlichen Zeitdruck erzeugen und nicht jeder das gleiche Lerntempo hat. Meiner Meinung nach überwiegen die Vorteile: Sprachförderung sollte jedoch freiwillig, aber attraktiv gestaltet sein, etwa durch bezahlte Arbeitszeit und flexible Kurszeiten. So profitieren sowohl Unternehmen als auch Mitarbeitende, ohne dass zusätzlicher Druck entsteht. Entscheidend ist, dass die Angebote praxisnah sind und tatsächlich zur beruflichen Kommunikation beitragen. Nur so lässt sich langfristig echte Integration erreichen, statt reiner Pflichterfüllung.',
   1, 1, 'essay', 130, 170,
   '["Nennen Sie Argumente für und gegen verpflichtende Kurse","Entwickeln Sie eine eigene, begründete Position","Beziehen Sie sich auf praktische Konsequenzen"]'::jsonb,
   '{"task_achievement":"Verschiedene Perspektiven berücksichtigt und eigene Position begründet?","coherence":"Klar strukturierter Argumentationsaufbau mit Konnektoren","vocabulary":"Breiter, präziser Wortschatz ohne Wiederholungen","grammar":"Komplexe Satzstrukturen, korrekte Konjunktive"}'::jsonb,
@@ -288,7 +288,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 1 — Vortrag halten\n\nHalten Sie einen kurzen Vortrag (circa 4 Minuten) zum Thema: „Sollten Berufsabschlüsse aus dem Ausland automatisch anerkannt werden?"\n\nGehen Sie ein auf:\n• Ihre Position und Begründung\n• Mögliche Alternativen zur automatischen Anerkennung\n• Beantworten Sie am Ende eine Nachfrage des Prüfers/der Prüferin',
+  E'Teil 1, Vortrag halten\n\nHalten Sie einen kurzen Vortrag (circa 4 Minuten) zum Thema: „Sollten Berufsabschlüsse aus dem Ausland automatisch anerkannt werden?"\n\nGehen Sie ein auf:\n• Ihre Position und Begründung\n• Mögliche Alternativen zur automatischen Anerkennung\n• Beantworten Sie am Ende eine Nachfrage des Prüfers/der Prüferin',
   'speaking',
   'Erwartung: Strukturierter Monolog mit klarer Position, Begründung, Alternativen und angemessener Reaktion auf eine Rückfrage.',
   3, 1, 'speaking',
@@ -302,7 +302,7 @@ INSERT INTO questions (
   "order", exam_part, task_type, rubric, points
 )
 SELECT tm.id,
-  E'Teil 2 — Diskussion führen\n\nDiskutieren Sie mit einem Partner/einer Partnerin (circa 5 Minuten): „Sollten Unternehmen internationale Fachkräfte bei der Wohnungssuche aktiv unterstützen?"\n\nVertreten Sie Ihren Standpunkt, gehen Sie auf die Argumente Ihres Partners ein und versuchen Sie, am Ende einen Kompromiss zu finden.',
+  E'Teil 2, Diskussion führen\n\nDiskutieren Sie mit einem Partner/einer Partnerin (circa 5 Minuten): „Sollten Unternehmen internationale Fachkräfte bei der Wohnungssuche aktiv unterstützen?"\n\nVertreten Sie Ihren Standpunkt, gehen Sie auf die Argumente Ihres Partners ein und versuchen Sie, am Ende einen Kompromiss zu finden.',
   'speaking',
   'Erwartung: Aktive Diskussion mit Standpunktvertretung, Eingehen auf Gegenargumente und gemeinsamer Kompromissfindung.',
   4, 2, 'speaking',

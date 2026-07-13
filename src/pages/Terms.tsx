@@ -51,7 +51,7 @@ export default function Terms() {
             <section>
               <h2 className="text-xl font-semibold text-foreground mb-3">5. Content & Intellectual Property</h2>
               <p>
-                All content on the Platform — including test questions, explanations, and feedback — is the
+                All content on the Platform, including test questions, explanations, and feedback, is the
                 property of DeutschPrep. You may not copy, reproduce, distribute, or commercially exploit
                 any content without written permission. Purchased access is for personal, non-commercial use
                 only.

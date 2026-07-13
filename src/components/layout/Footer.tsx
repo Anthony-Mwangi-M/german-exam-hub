@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const levels = [
-  { id: "a1", label: "A1 — Beginner" },
-  { id: "a2", label: "A2 — Elementary" },
-  { id: "b1", label: "B1 — Intermediate" },
-  { id: "b2", label: "B2 — Upper-Intermediate" },
+  { id: "a1", label: "A1 Beginner" },
+  { id: "a2", label: "A2 Elementary" },
+  { id: "b1", label: "B1 Intermediate" },
+  { id: "b2", label: "B2 Upper-Intermediate" },
 ];
 
 export function Footer() {
@@ -79,7 +79,7 @@ export function Footer() {
               <li>Lesen (Reading)</li>
               <li>Schreiben (Writing)</li>
               <li>Sprechen (Speaking)</li>
-              <li>Hören (Listening) — soon</li>
+              <li>Hören (Listening), coming soon</li>
             </ul>
           </div>
         </div>
