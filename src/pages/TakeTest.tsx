@@ -243,12 +243,19 @@ export default function TakeTest() {
         0
       );
 
-      // Open-ended questions are pending; score reflects MCQ only
+      // Open-ended questions are pending; score reflects MCQ only.
+      // While instructor review is pending, percentage stays null so the UI
+      // shows a pending state instead of an interim number. Instructor
+      // grading writes the final score and percentage when review completes.
       const openEndedCount = questions.filter(
         q => q.question_type === 'essay' || q.question_type === 'speaking'
       ).length;
-      const score = earnedMcqPoints;
-      const percentage = mcqMaxPoints > 0 ? Math.round((earnedMcqPoints / mcqMaxPoints) * 100) : 0;
+      const hasOpenEnded = openEndedCount > 0;
+      const percentage = hasOpenEnded
+        ? null
+        : mcqMaxPoints > 0
+          ? Math.round((earnedMcqPoints / mcqMaxPoints) * 100)
+          : 0;
 
       // Update test attempt
       const { error: updateError } = await (supabase
@@ -262,11 +269,10 @@ export default function TakeTest() {
 
       if (updateError) throw updateError;
 
-      const hasOpenEnded = openEndedCount > 0;
       toast({
-        title: "Test submitted! ✅",
+        title: "Test submitted",
         description: hasOpenEnded
-          ? `Your MCQ score is ready. Your instructor will review your writing & speaking answers.`
+          ? "Your instructor will review your answers. Your score will appear on the results page once grading is complete."
           : "Your results are ready.",
       });
 

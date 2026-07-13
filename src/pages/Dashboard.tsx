@@ -250,15 +250,26 @@ export default function Dashboard() {
                           </div>
                           <div className="flex items-center gap-4">
                             <div className="text-right">
-                              <div className={`text-2xl font-bold ${
-                                (attempt.percentage || 0) >= 85 ? 'text-green-600' :
-                                (attempt.percentage || 0) >= 70 ? 'text-blue-600' :
-                                (attempt.percentage || 0) >= 50 ? 'text-orange-600' :
-                                'text-red-600'
-                              }`}>
-                                {attempt.percentage || 0}%
-                              </div>
-                              <p className="text-xs text-muted-foreground">Score</p>
+                              {attempt.percentage === null ? (
+                                <>
+                                  <div className="text-sm font-semibold text-amber-600">
+                                    Pending review
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">Instructor grading</p>
+                                </>
+                              ) : (
+                                <>
+                                  <div className={`text-2xl font-bold ${
+                                    attempt.percentage >= 85 ? 'text-green-600' :
+                                    attempt.percentage >= 70 ? 'text-blue-600' :
+                                    attempt.percentage >= 50 ? 'text-orange-600' :
+                                    'text-red-600'
+                                  }`}>
+                                    {Math.round(attempt.percentage)}%
+                                  </div>
+                                  <p className="text-xs text-muted-foreground">Score</p>
+                                </>
+                              )}
                             </div>
                             {!attempt.is_placement_test && attempt.test_module && (
                               <Button asChild size="sm" variant="outline">

@@ -12,7 +12,9 @@ import { getRecordingPlaybackUrl } from "@/lib/recordings";
 
 interface TestAttempt {
   id: string;
-  score: number;
+  score: number | null;
+  max_score: number;
+  percentage: number | null;
   completed_at: string;
   test_module: {
     id: string;
@@ -160,9 +162,12 @@ export default function TestResults() {
   const openEndedResults = results.filter((r) => r.question_type === 'essay' || r.question_type === 'speaking');
   const correctCount = mcqResults.filter((r) => r.is_correct === true).length;
   const totalMcq = mcqResults.length;
-  const totalQuestions = results.length;
-  const percentage = attempt.score;
-  const hasPending = openEndedResults.length > 0;
+  // Pending = answers the instructor has not graded yet (is_correct is null).
+  // Once grading completes, is_correct is set and the final percentage is stored.
+  const pendingCount = results.filter((r) => r.is_correct === null).length;
+  const isPending = pendingCount > 0 || attempt.percentage === null;
+  const percentage = Math.round(attempt.percentage ?? 0);
+  const reviewComplete = openEndedResults.length > 0 && !isPending;
 
   const getScoreColor = (score: number) => {
     if (score >= 85) return 'text-green-600';
@@ -194,25 +199,41 @@ export default function TestResults() {
           {/* Score Card */}
           <Card className="mb-8">
             <CardHeader className="text-center pb-4">
-              <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
-                <Trophy className="h-12 w-12 text-primary" />
+              <div className={`mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full ${isPending ? 'bg-amber-100' : 'bg-primary/10'}`}>
+                {isPending ? (
+                  <Clock className="h-12 w-12 text-amber-600" />
+                ) : (
+                  <Trophy className="h-12 w-12 text-primary" />
+                )}
               </div>
-              <CardTitle className="text-3xl">{getScoreMessage(percentage)}</CardTitle>
+              <CardTitle className="text-3xl">
+                {isPending ? 'Instructor review pending' : getScoreMessage(percentage)}
+              </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="mb-6">
-                <div className={`text-6xl font-bold ${getScoreColor(percentage)}`}>
-                  {percentage}%
-                </div>
-                <p className="mt-2 text-muted-foreground">
-                  {totalMcq > 0
-                    ? `${correctCount} of ${totalMcq} multiple choice correct`
-                    : 'Submitted for review'}
-                </p>
-                {hasPending && (
-                  <p className="mt-1 text-sm text-amber-600">
-                    + {openEndedResults.length} open-ended answer{openEndedResults.length > 1 ? 's' : ''} pending instructor review
-                  </p>
+                {isPending ? (
+                  <>
+                    <p className="text-muted-foreground">
+                      Your final score will appear here once your instructor has graded your answers.
+                    </p>
+                    {totalMcq > 0 && (
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        Multiple choice so far: {correctCount} of {totalMcq} correct
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <div className={`text-6xl font-bold ${getScoreColor(percentage)}`}>
+                      {percentage}%
+                    </div>
+                    <p className="mt-2 text-muted-foreground">
+                      {totalMcq > 0
+                        ? `${correctCount} of ${totalMcq} multiple choice correct`
+                        : 'Graded by your instructor'}
+                    </p>
+                  </>
                 )}
               </div>
 
@@ -245,16 +266,29 @@ export default function TestResults() {
                 </Button>
               </div>
 
-              {/* Instructor review notice if any open-ended questions */}
-              {results.some(r => r.question_type === 'essay' || r.question_type === 'speaking') && (
+              {/* Instructor review status for open-ended questions */}
+              {isPending && openEndedResults.length > 0 && (
                 <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4 text-left">
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium text-amber-900">Instructor Review Pending</p>
+                      <p className="font-medium text-amber-900">What happens next?</p>
                       <p className="text-sm text-amber-700 mt-1">
                         Your writing and speaking answers have been submitted and are awaiting instructor review.
                         Check back on this results page for your full grade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {reviewComplete && (
+                <div className="mt-6 rounded-lg border border-green-200 bg-green-50 p-4 text-left">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium text-green-900">Instructor review complete</p>
+                      <p className="text-sm text-green-700 mt-1">
+                        Your writing and speaking answers have been graded. Open the answer review below for feedback.
                       </p>
                     </div>
                   </div>
